@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADRIAN — 3D Artist Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAVIGATION ──────────────────────────────────────── -->
+<nav>
+  <a href="#hero" class="nav-logo">ADRIAN LEON</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO SECTION ────────────────────────────────────── -->
+<section id="hero">
+  <canvas id="three-canvas"></canvas>
+
+<img id="hero-image-bg" src="imgs/StarbornOrion/0001.png" alt="">
+
+
+  <svg class="hero-ornament" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M400 0 L400 400 M0 0 L400 0" stroke="white" stroke-width="0.5" opacity="0.3"/>
+    <circle cx="380" cy="20" r="8" fill="none" stroke="white" stroke-width="0.5"/>
+    <circle cx="380" cy="20" r="3" fill="white" opacity="0.4"/>
+    <path d="M380 28 L380 80 M372 20 L320 20" stroke="white" stroke-width="0.5"/>
+    <path d="M340 20 L340 40 M380 60 L360 60" stroke="white" stroke-width="0.3"/>
+    <circle cx="360" cy="60" r="4" fill="none" stroke="white" stroke-width="0.5"/>
+    <path d="M340 40 L340 42 L338 44 L340 46 L342 44 L340 42" stroke="white" stroke-width="0.4" fill="none"/>
+    <path d="M380 80 L380 100 L376 104 L380 108 L384 104 L380 100" stroke="white" stroke-width="0.4" fill="none"/>
+    <path d="M380 28 L360 48 M360 48 L350 48 M360 48 L360 70" stroke="white" stroke-width="0.3" opacity="0.5"/>
+    <path d="M372 20 L362 30 L362 50" stroke="white" stroke-width="0.3" opacity="0.4"/>
+    <path d="M395 5 Q390 15 380 15" stroke="white" stroke-width="0.4" fill="none" opacity="0.6"/>
+    <path d="M5 395 Q15 390 15 380" stroke="white" stroke-width="0.4" fill="none" opacity="0.3"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">3D Environment Artist</p>
+    <h1 class="hero-title">
+      ADRIAN
+      <span>LEON</span>
+    </h1>
+    <p class="hero-desc">I'm a dreamers -- crafting worlds where beauty and decay intertwine</p>
+    <a href="#work" class="hero-cta">View Portfolio →</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── ABOUT SECTION ──────────────────────────────────── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-frame">
+           <img src="imgs/your-photo.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"> -->
+      <div class="about-photo-placeholder">meow meow</div>
+    </div>
+
+    <div class="about-text">
+      <span class="section-label">The Artist</span>
+      <h2 class="section-title">Between shadow<br>and light</h2>
+
+      <div class="ornate-divider" style="margin: 0 0 32px;">
+        <div class="ornate-divider-glyph">✦</div>
+      </div>
+
+      <p>Adrian Leon is a Chicago-based 3D Environment Artist originally from Guatemala, specializing in creating surreal, immersive worlds for games. His portfolio features projects ranging from expansive, detailed landscapes to atmospheric interior environments, crafted using tools such as Blender, Unreal Engine, and Substance Painter. Adrian blends his technical expertise with a passion for storytelling to create visually captivating, narrative-driven game spaces.</p>
+
+<p>In addition to designing 3D environments, Adrian has a deep love for writing about the worlds he creates. He develops lore and narratives that give depth and context to his environments, ensuring each world is not only visually striking but also rich with meaning and emotional resonance. This storytelling is central to his creative process, bringing life and purpose to the spaces he designs.</p>
+
+<p>Adrian is actively seeking opportunities in the gaming industry to further refine his craft, collaborate with other creatives, and push the boundaries of immersive world design. Outside of his work, he finds inspiration in music. Specifically post-rock and progressive metal He enjoys discovering new bands, attending live shows, and playing guitar. Surrounded by art in all its forms, Adrian draws on a wide range of influences to fuel his creative vision.</p>
+      <div class="about-stats">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO / WORK ──────────────────────────────── -->
+<section id="work">
+  <div class="work-header">
+    <span class="section-label">Selected Works</span>
+    <h2 class="section-title">The Portfolio</h2>
+  </div>
+
+  <div class="portfolio-grid">
+
+    <a href="starborn.html" class="portfolio-item reveal">
+      <div class="item-bg">
+        <img src="imgs/StarbornOrion/0000.png" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="item-overlay">
+        <span class="item-category">Environment · Unreal Engine 5</span>
+        <span class="item-title">Starborn Orion</span>
+      </div>
+    </a>
+
+    <a href="Alchemist.html" class="portfolio-item reveal">
+      <div class="item-bg">
+        <img src="imgs/Alchemist Study/HighresScreenshot00003.png" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="item-overlay">
+        <span class="item-category">Environment · Unreal Engine</span>
+        <span class="item-title">Alchemist Study</span>
+      </div>
+    </a>
+
+    <a href="deadrails.html" class="portfolio-item reveal">
+      <div class="item-bg">
+        <img src="imgs/Library Header.png" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="item-overlay">
+        <span class="item-category">Game · Unreal Engine 5</span>
+        <span class="item-title">Dead Rails</span>
+      </div>
+    </a>
+
+    <a href="odyssey.html" class="portfolio-item reveal">
+      <div class="item-bg">
+        <img src="imgs/Odyssey/HighresScreenshot00000.webp" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="item-overlay">
+        <span class="item-category">Game · Unity</span>
+        <span class="item-title">OdysseyVR</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+</section>
+
+
+<!-- ── SKILLS / TOOLS ─────────────────────────────── -->
+<section id="skills">
+  <div class="skills-inner">
+    <span class="section-label">Arsenal</span>
+    <h2 class="section-title">Tools of the Craft</h2>
+
+    <div class="ornate-divider" style="margin: 0 auto 64px;">
+      <div class="ornate-divider-glyph">✦</div>
+    </div>
+
+    <div class="tools-grid">
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/unreal.png" alt="Unreal Engine" class="tool-img">
+        </div>
+        <span class="tool -name">Unreal Engine</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/blender.png" alt="Blender" class="tool-img">
+        </div>
+        <span class="tool-name">Blender</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/substance.png" alt="Substance Painter" class="tool-img">
+        </div>
+        <span class="tool-name">Substance Painter</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/designer.png" alt="Substance Painter" class="tool-img">
+        </div>
+        <span class="tool-name">Substance Designer</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/photoshop.png" alt="Photoshop" class="tool-img">
+        </div>
+        <span class="tool-name">Photoshop</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/maya.png" alt="Maya" class="tool-img">
+        </div>
+        <span class="tool-name">Maya</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/unity.png" alt="Unity" class="tool-img">
+        </div>
+        <span class="tool-name">Unity</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/3ds.png" alt="3ds Max" class="tool-img">
+        </div>
+        <span class="tool-name">3ds Max</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/csharp.png" alt="C#" class="tool-img">
+        </div>
+        <span class="tool-name">C#</span>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-icon-wrap">
+          <img src="imgs/brush.png" alt="C#" class="tool-img">
+        </div>
+        <span class="tool-name">Z-Brush</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-inner">
+    <span class="section-label">Reach Out</span>
+    <h2 class="section-title">Begin a Conversation</h2>
+
+    <div class="ornate-divider">
+      <div class="ornate-divider-glyph">✦</div>
+    </div>
+
+    <p class="contact-intro">Whether you have a commission, a collaboration, or simply wish to speak of sacred ruins and distant worlds — my door is open.</p>
+
+    <a href="mailto:adrianeleonf@gmail.com" class="contact-email">adrianeleonf@gmail.com</a>
+
+    <ul class="social-links">
+      <li><a href="https://github.com/adrianeleonf" target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/adrian-leon-f/" target="_blank">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/adrianleon0/" target="_blank">Instagram</a></li>
+      <li><a href="#" target="_blank">Artstation</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <p>© 2025 ADRIAN LEON — All rights reserved</p>
+  <p>Built by your one and only meiuxx</p>
+</footer>
+
+<script>
+(function() {
+
+  const CONFIG = {
+    fogColor: 0x050407,
+    ambientLight: 0x1a1025,
+    ambientIntensity: 0.6,
+    moonColor: 0x8899cc,
+    moonIntensity: 1.2,
+    candleColor: 0xf5c87a,
+    cameraHeight: 3.5,
+    cameraZ: 16,
+    autoRotateSpeed: 0.0003,
+    particleCount: 600,
+  };
+
+  const canvas = document.getElementById('three-canvas');
+  const scene  = new THREE.Scene();
+  scene.fog    = new THREE.FogExp2(CONFIG.fogColor, 0.035);
+
+  /* Alpha: true + setClearColor alpha 0 = transparent canvas */
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
+  renderer.setClearColor(0x000000, 0); /* fully transparent */
+
+  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+  camera.position.set(0, CONFIG.cameraHeight, CONFIG.cameraZ);
+  camera.lookAt(0, 4, 0);
+
+  function resize() {
+    const w = canvas.parentElement.offsetWidth;
+    const h = canvas.parentElement.offsetHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* ── FLOOR ── */
+const floorMat = new THREE.MeshStandardMaterial({
+  color: 0x18141e, roughness: 0.9, metalness: 0.1,
+  transparent: true, opacity: 0,
+});
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(80, 80, 20, 20), floorMat);
+  floor.rotation.x = -Math.PI / 2;
+  floor.receiveShadow = true;
+  scene.add(floor);
+
+  /* ── LIGHTING ── */
+  scene.add(new THREE.AmbientLight(CONFIG.ambientLight, CONFIG.ambientIntensity));
+
+  const moon = new THREE.DirectionalLight(CONFIG.moonColor, CONFIG.moonIntensity);
+  moon.position.set(-8, 20, 5);
+  moon.castShadow = true;
+  moon.shadow.mapSize.set(2048, 2048);
+  moon.shadow.camera.near   = 0.5;
+  moon.shadow.camera.far    = 60;
+  moon.shadow.camera.left   = -20;
+  moon.shadow.camera.right  = 20;
+  moon.shadow.camera.top    = 20;
+  moon.shadow.camera.bottom = -20;
+  scene.add(moon);
+
+  const candlePositions = [[-3, 1, -4], [3, 1, -4], [0, 2, -5.5]];
+  const candles = [];
+  candlePositions.forEach(function([x, y, z]) {
+    const light = new THREE.PointLight(CONFIG.candleColor, 1.8, 8);
+    light.position.set(x, y, z);
+    scene.add(light);
+    candles.push({ light, baseY: y, phase: Math.random() * Math.PI * 2 });
+  });
+
+  const hellLight = new THREE.PointLight(0x3d1a5c, 0.8, 15);
+  hellLight.position.set(0, 0.5, -5);
+  scene.add(hellLight);
+
+  /* ── PARTICLES ── */
+  const partGeo       = new THREE.BufferGeometry();
+  const partPositions = new Float32Array(CONFIG.particleCount * 3);
+  for (let i = 0; i < CONFIG.particleCount; i++) {
+    partPositions[i * 3]     = (Math.random() - 0.5) * 18;
+    partPositions[i * 3 + 1] = Math.random() * 14;
+    partPositions[i * 3 + 2] = (Math.random() - 0.5) * 18;
+  }
+  partGeo.setAttribute('position', new THREE.BufferAttribute(partPositions, 3));
+  const partMat = new THREE.PointsMaterial({
+    color: 0xc9a84c, size: 0.04, transparent: true, opacity: 0.4, sizeAttenuation: true,
+  });
+  const particles = new THREE.Points(partGeo, partMat);
+  scene.add(particles);
+
+  /* ── MOUSE PARALLAX ── */
+  let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+  document.addEventListener('mousemove', function(e) {
+    targetX = (e.clientX / window.innerWidth  - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  /* ── VOLUMETRIC GOD RAYS ─────────────────────────────────
+   Shafts of light descending from upper-left (moon position)  */
+
+const rayGroup = new THREE.Group();
+scene.add(rayGroup);
+
+const rayMat = new THREE.MeshBasicMaterial({
+  color: 0x8899cc,        // matches your moon color
+  transparent: true,
+  opacity: 0.045,
+  side: THREE.DoubleSide,
+  depthWrite: false,      // prevents z-fighting with image
+});
+
+// Each ray is a long thin cone-like box, angled from upper-left
+const rayConfigs = [
+  { x: -3,  width: 1.4,  length: 28, rotZ:  0.18 },
+  { x: -1,  width: 0.9,  length: 32, rotZ:  0.12 },
+  { x:  1,  width: 1.8,  length: 26, rotZ:  0.08 },
+  { x:  3,  width: 0.7,  length: 30, rotZ:  0.22 },
+  { x:  5,  width: 1.1,  length: 24, rotZ:  0.05 },
+  { x: -5,  width: 0.6,  length: 34, rotZ:  0.28 },
+];
+
+const rays = [];
+rayConfigs.forEach(function(cfg) {
+  // Taper the ray using a custom geometry (wide at top, narrow at bottom)
+  const geo = new THREE.BufferGeometry();
+  const w = cfg.width;
+  const l = cfg.length;
+  // Two triangles forming a tapered quad
+  const verts = new Float32Array([
+    -w / 2, 0,      0,
+     w / 2, 0,      0,
+    -w / 6, -l,     0,
+     w / 2, 0,      0,
+     w / 6, -l,     0,
+    -w / 6, -l,     0,
+  ]);
+  geo.setAttribute('position', new THREE.BufferAttribute(verts, 3));
+
+  const mat = rayMat.clone();
+  const mesh = new THREE.Mesh(geo, mat);
+
+  // Position: start high up, angle from the moon direction
+  mesh.position.set(cfg.x - 4, 18, -2);
+  mesh.rotation.z = -cfg.rotZ;
+  mesh.rotation.y = 0.3;
+
+  rayGroup.add(mesh);
+  rays.push({ mesh, mat, baseOpacity: 0.03 + Math.random() * 0.06, phase: Math.random() * Math.PI * 2 });
+});
+
+/* ── AURORA RIBBONS ──────────────────────────────────────
+   Undulating sheets of color with golden accents          */
+
+const auroraGroup = new THREE.Group();
+scene.add(auroraGroup);
+
+const auroraRibbons = [];
+
+const ribbonConfigs = [
+  { color: 0x2d1b69, z: -12, y: 8,  width: 40, opacity: 0.12, speed: 0.18, phase: 0 },
+  { color: 0x1a3a5c, z: -15, y: 11, width: 50, opacity: 0.09, speed: 0.13, phase: 1.2 },
+  { color: 0xc9a84c, z: -10, y: 6,  width: 30, opacity: 0.06, speed: 0.22, phase: 2.4 },  // gold
+  { color: 0x3d1a5c, z: -18, y: 14, width: 55, opacity: 0.08, speed: 0.10, phase: 0.7 },
+  { color: 0xb8860b, z: -8,  y: 5,  width: 25, opacity: 0.05, speed: 0.28, phase: 3.1 },  // deep gold
+  { color: 0x0d2a4a, z: -20, y: 16, width: 60, opacity: 0.07, speed: 0.08, phase: 1.8 },
+];
+
+const RIBBON_SEGMENTS = 40; // horizontal divisions — more = smoother wave
+
+ribbonConfigs.forEach(function(cfg) {
+  const geo = new THREE.BufferGeometry();
+  const positions = new Float32Array((RIBBON_SEGMENTS + 1) * 2 * 3);
+  const uvs       = new Float32Array((RIBBON_SEGMENTS + 1) * 2 * 2);
+  const indices   = [];
+
+  // Build a flat ribbon — positions will be deformed each frame in animate()
+  for (let i = 0; i <= RIBBON_SEGMENTS; i++) {
+    const t = i / RIBBON_SEGMENTS;
+    const x = (t - 0.5) * cfg.width;
+    // top vertex
+    positions[(i * 2)     * 3 + 0] = x;
+    positions[(i * 2)     * 3 + 1] = cfg.y + 1.5;
+    positions[(i * 2)     * 3 + 2] = cfg.z;
+    // bottom vertex
+    positions[(i * 2 + 1) * 3 + 0] = x;
+    positions[(i * 2 + 1) * 3 + 1] = cfg.y - 1.5;
+    positions[(i * 2 + 1) * 3 + 2] = cfg.z;
+
+    uvs[(i * 2)     * 2 + 0] = t; uvs[(i * 2)     * 2 + 1] = 1;
+    uvs[(i * 2 + 1) * 2 + 0] = t; uvs[(i * 2 + 1) * 2 + 1] = 0;
+
+    if (i < RIBBON_SEGMENTS) {
+      const a = i * 2, b = i * 2 + 1, c = i * 2 + 2, d = i * 2 + 3;
+      indices.push(a, b, c, b, d, c);
+    }
+  }
+
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('uv',       new THREE.BufferAttribute(uvs, 2));
+  geo.setIndex(indices);
+
+  const mat = new THREE.MeshBasicMaterial({
+    color: cfg.color,
+    transparent: true,
+    opacity: cfg.opacity,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending, // makes overlapping ribbons glow
+  });
+
+  const mesh = new THREE.Mesh(geo, mat);
+  auroraGroup.add(mesh);
+
+  auroraRibbons.push({
+    mesh,
+    mat,
+    cfg,
+    baseOpacity: cfg.opacity,
+    phase: cfg.phase,
+    speed: cfg.speed,
+    baseY: cfg.y,
+  });
+});
+
+  /* ── ANIMATION LOOP ── */
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.016;
+
+    currentX += (targetX - currentX) * 0.04;
+    currentY += (targetY - currentY) * 0.04;
+
+    const orbitAngle = t * CONFIG.autoRotateSpeed * 60;
+    camera.position.x = Math.sin(orbitAngle) * 2 + currentX * 1.5;
+    camera.position.z = CONFIG.cameraZ + Math.cos(orbitAngle) * 2;
+    camera.position.y = CONFIG.cameraHeight - currentY * 0.8;
+    camera.lookAt(0, 4, 0);
+
+    candles.forEach(function({ light, baseY, phase }) {
+      light.intensity  = 1.5 + Math.sin(t * 8 + phase) * 0.4 + Math.sin(t * 13.7 + phase) * 0.2;
+      light.position.y = baseY + Math.sin(t * 6 + phase) * 0.05;
+    });
+
+    // God ray pulse — slow breathe in and out
+rays.forEach(function(r) {
+  r.mat.opacity = r.baseOpacity + Math.sin(t * 0.4 + r.phase) * 0.012;
+});
+
+// Aurora ribbon undulation
+auroraRibbons.forEach(function(r) {
+  const pos = r.mesh.geometry.attributes.position.array;
+
+  for (let i = 0; i <= RIBBON_SEGMENTS; i++) {
+    const frac = i / RIBBON_SEGMENTS;
+    // Wave: each column of vertices shifts up/down independently
+    const wave = Math.sin(frac * 6 + t * r.speed + r.phase) * 1.2
+               + Math.sin(frac * 3 + t * r.speed * 0.6 + r.phase + 1) * 0.6;
+
+    // Ribbon thickness also breathes
+    const breathe = 1.5 + Math.sin(t * r.speed * 0.5 + r.phase) * 0.4;
+
+    // top vertex
+    pos[(i * 2)     * 3 + 1] = r.baseY + wave + breathe;
+    // bottom vertex
+    pos[(i * 2 + 1) * 3 + 1] = r.baseY + wave - breathe;
+  }
+
+  r.mesh.geometry.attributes.position.needsUpdate = true;
+
+  // Opacity drift — ribbons fade in and out slowly
+  r.mat.opacity = r.baseOpacity * (0.6 + Math.sin(t * r.speed * 0.4 + r.phase) * 0.4);
+});
+    const pos = particles.geometry.attributes.position.array;
+    for (let i = 0; i < CONFIG.particleCount; i++) {
+      pos[i * 3 + 1] += 0.004 + Math.sin(t + i) * 0.002;
+      pos[i * 3]     += Math.sin(t * 0.3 + i) * 0.001;
+      if (pos[i * 3 + 1] > 14) pos[i * 3 + 1] = 0;
+    }
+    particles.geometry.attributes.position.needsUpdate = true;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+})();
+</script>
+
+<!-- ── CUSTOM CURSOR ──────────────────────────────────── -->
+<script>
+(function() {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+
+  document.addEventListener('mousemove', function(e) {
+    dot.style.left  = e.clientX + 'px';
+    dot.style.top   = e.clientY + 'px';
+    ring.style.left = e.clientX + 'px';
+    ring.style.top  = e.clientY + 'px';
+  });
+
+  document.querySelectorAll('a, button, .portfolio-item').forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      ring.style.width   = '50px';
+      ring.style.height  = '50px';
+      ring.style.opacity = '0.8';
+    });
+    el.addEventListener('mouseleave', function() {
+      ring.style.width   = '28px';
+      ring.style.height  = '28px';
+      ring.style.opacity = '0.5';
+    });
+  });
+})();
+</script>
+
+<!-- ── SCROLL REVEAL ──────────────────────────────────── -->
+<script>
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        const siblings = e.target.parentElement.querySelectorAll('.reveal');
+        siblings.forEach(function(el, i) {
+          setTimeout(function() { el.classList.add('visible'); }, i * 100);
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+})();
+
+
+</script>
+
+</body>
+</html>

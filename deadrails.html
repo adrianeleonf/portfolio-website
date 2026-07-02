@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dead Rails — ADRIAN LEON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project_style.css">
+
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAVIGATION ──────────────────────────────────────── -->
+<nav>
+  <a href="main.html" class="nav-logo">ADRIAN LEON</a>
+  <a href="main.html#work" class="nav-back">All Projects</a>
+</nav>
+
+<!-- ── PROJECT HERO ────────────────────────────────────── -->
+<section class="project-hero">
+  <div class="hero-bg">
+    <img src="imgs/Dead Rails/Library Header.png">
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-accent-line"></div>
+
+  <div class="project-hero-content">
+    <span class="project-category">Cooperative · Unreal Engine 5</span>
+    <h1 class="project-hero-title">Dead Rails</h1>
+    <p class="project-hero-sub">Four players. One train. An endless tide of the dead between here and the next stop.</p>
+
+    <div class="project-meta-row">
+      <div class="meta-pill"><span>Year</span>2025</div>
+      <div class="meta-pill"><span>Role</span>Solo Environment Artist</div>
+      <div class="meta-pill"><span>Engine</span>Unreal Engine 5</div>
+      <div class="meta-pill"><span>Players</span>1–4 Co-op</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN BODY ────────────────────────────────────────── -->
+<main class="project-body">
+
+  <!-- ── INTRO ── -->
+  <div class="project-intro-grid">
+    <div class="project-description">
+      <span class="section-label">The Vision</span>
+      <h2 class="section-title">Keep moving<br>or die trying</h2>
+
+      <div class="ornate-divider" style="margin-bottom: 32px;">
+        <div class="ornate-divider-glyph">✦</div>
+      </div>
+
+      <p>Dead Rails began with a single design question: what if the objective was also the timer? In a post-apocalyptic world stripped down to one lifeline — the railroad — the train isn't just transport. It's the anchor, the fuel gauge, and the thing worth dying for.</p>
+
+      <p>Every environment was built around that tension. Survivor camps designed to tempt players off the train, open terrain that rewards aggression and punishes hesitation, and train shelters that funnel the horde into brutal chokepoints. The world exists to pressure the team, not just fill space.</p>
+
+      <p>Built in Unreal Engine 5 with Lumen global illumination, the lighting shifts from the cold blue desolation of open track to the desperate warmth of survivor fires — each zone communicating danger and safety without a single word of UI.</p>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="project-details-card">
+      <span class="section-label" style="margin-bottom: 28px;">Project Details</span>
+
+      <div class="detail-item">
+        <span class="detail-label">Studio</span>
+        <span class="detail-value">RedZip Studio</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Genre</span>
+        <span class="detail-value">Twin-Stick Shooter</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Primary Tool</span>
+        <span class="detail-value">Unreal Engine 5</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Modeling</span>
+        <span class="detail-value">Blender</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Texturing</span>
+        <span class="detail-value">Substance Painter</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Status</span>
+        <span class="detail-value" style="color: var(--accent-gold);">Complete</span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ── CAROUSEL ── -->
+  <div class="carousel-section">
+    <span class="section-label">Gallery</span>
+    <h2 class="section-title">Selected Renders</h2>
+
+    <div class="carousel-outer" id="carousel">
+      <div class="drag-hint">Drag to explore</div>
+
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="carousel-slide">
+            <img src="imgs/Dead Rails/Library Header.png" alt="Overview shot">
+            <div class="slide-caption">Overview</div>
+            <span class="slide-index">01</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="imgs/Dead Rails/SupplyCrateOpenAnim-ezgif.com-optimize.gif" alt="Interior shot">
+            <div class="slide-caption">Supply Crate Opening Animation</div>
+            <span class="slide-index">02</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="imgs/Dead Rails/CrateOpenAnim-ezgif.com-optimize.gif" alt="Environment shot">
+            <div class="slide-caption">Crate Opening Animation</div>
+            <span class="slide-index">03</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="imgs/Dead Rails/Base_MM_MaterialGraph_0_00000.webp" alt="Shelter shot">
+            <div class="slide-caption">Base Material Graph</div>
+            <span class="slide-index">04</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="imgs/Dead Rails/ColorCorrectionCurve.webp" alt="Combat shot">
+            <div class="slide-caption">Color Correction Curve</div>
+            <span class="slide-index">05</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="imgs/Dead Rails/LightingCurve.webp" alt="Shelter shot">
+            <div class="slide-caption">Lighting Curve</div>
+            <span class="slide-index">06</span>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /track-wrap -->
+
+      <div class="carousel-controls">
+        <div class="carousel-arrows">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <div class="carousel-counter">
+          <span class="current" id="counterCurrent">01</span>
+          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
+          <span id="counterTotal">05</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BEFORE / AFTER COLOUR CORRECTION ── -->
+  <div class="beforeafter-section">
+    <span class="section-label">Colour Grading</span>
+    <h2 class="section-title">Before &amp; After</h2>
+
+    <div class="beforeafter-wrap" id="beforeAfterWrap">
+      <div class="ba-after">
+        <img src="imgs/Dead Rails/ScreenShot00000.webp" alt="After colour correction">
+      </div>
+      <div class="ba-before" id="baBefore">
+        <img src="imgs/Dead Rails/ScreenShot00001.webp" alt="Before colour correction">
+      </div>
+
+      <!-- Divider line + handle -->
+      <div class="ba-divider" id="baDivider">
+        <div class="ba-handle">
+          <span class="ba-arrow ba-arrow-left">‹</span>
+          <span class="ba-arrow ba-arrow-right">›</span>
+        </div>
+      </div>
+
+      <!-- Labels -->
+      <span class="ba-label ba-label-before">Before</span>
+      <span class="ba-label ba-label-after">After</span>
+    </div>
+  </div>
+
+  <!-- ── TECHNICAL SPECS ── -->
+  <div class="specs-section">
+    <span class="section-label">Under the Hood</span>
+    <h2 class="section-title">Technical Specifications</h2>
+
+    <div class="specs-grid">
+      <div class="spec-row">
+        <span class="spec-key">Triangle Count (Hero Props)</span>
+        <span class="spec-val gold">~180k tris</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Texture Resolution</span>
+        <span class="spec-val">2K · 4K Hero Assets</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Lighting System</span>
+        <span class="spec-val gold">Lumen GI</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Geometry System</span>
+        <span class="spec-val">Nanite Enabled</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Unique Materials</span>
+        <span class="spec-val gold">28</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Post Process</span>
+        <span class="spec-val">Color Grading</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Total Assets</span>
+        <span class="spec-val gold">94 Unique Meshes</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Render Mode</span>
+        <span class="spec-val">Real-time · Path Traced</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PREV / NEXT PROJECTS ── -->
+  <nav class="project-nav" aria-label="Project navigation">
+    <a href="Alchemist.html" class="project-nav-item prev">
+      <span class="nav-item-arrow">←</span>
+      <span class="nav-item-text">
+        <span class="nav-item-label">Previous</span>
+        <span class="nav-item-title">Alchemist Study</span>
+      </span>
+    </a>
+    <a href="starborn.html" class="project-nav-item next">
+      <span class="nav-item-text">
+        <span class="nav-item-label">Next</span>
+        <span class="nav-item-title">Starborn Orion</span>
+      </span>
+      <span class="nav-item-arrow">→</span>
+    </a>
+  </nav>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <p>© 2025 ADRIAN LEON — All rights reserved</p>
+  <p>Built by your one and only meiuxx</p>
+</footer>
+
+<!-- ── SCRIPTS ─────────────────────────────────────────── -->
+
+<!-- Custom cursor -->
+<script>
+(function() {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+
+  document.addEventListener('mousemove', function(e) {
+    dot.style.left  = e.clientX + 'px';
+    dot.style.top   = e.clientY + 'px';
+    ring.style.left = e.clientX + 'px';
+    ring.style.top  = e.clientY + 'px';
+  });
+
+  document.querySelectorAll('a, button, .carousel-slide').forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      ring.style.width   = '50px';
+      ring.style.height  = '50px';
+      ring.style.opacity = '0.8';
+    });
+    el.addEventListener('mouseleave', function() {
+      ring.style.width   = '28px';
+      ring.style.height  = '28px';
+      ring.style.opacity = '0.5';
+    });
+  });
+})();
+</script>
+
+<!-- Carousel -->
+<script>
+(function() {
+  const track   = document.getElementById('carouselTrack');
+  const slides  = track.querySelectorAll('.carousel-slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsEl  = document.getElementById('carouselDots');
+  const counterCurrent = document.getElementById('counterCurrent');
+  const counterTotal   = document.getElementById('counterTotal');
+  const carouselOuter  = document.getElementById('carousel');
+
+  const total = slides.length;
+  let current = 0;
+
+  counterTotal.textContent = String(total).padStart(2, '0');
+
+  // Build dots
+  const dots = [];
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', function() { goTo(i); });
+    dotsEl.appendChild(d);
+    dots.push(d);
+  }
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    counterCurrent.textContent = String(current + 1).padStart(2, '0');
+  }
+
+  prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+  // Keyboard nav
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+  // Touch / drag swipe
+  let startX = 0, isDragging = false;
+
+  track.addEventListener('mousedown',  function(e) { startX = e.clientX; isDragging = true; });
+  track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+
+  track.addEventListener('mouseup', function(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    carouselOuter.classList.add('dragged');
+    const diff = e.clientX - startX;
+    if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
+  });
+  track.addEventListener('touchend', function(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    carouselOuter.classList.add('dragged');
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
+  });
+
+  // Prevent image drag
+  track.querySelectorAll('img').forEach(function(img) {
+    img.addEventListener('dragstart', function(e) { e.preventDefault(); });
+  });
+})();
+</script>
+
+<!-- Scroll reveal for specs -->
+<script>
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.spec-row').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+</script>
+
+<!-- Before / After slider -->
+<script>
+(function() {
+  const wrap    = document.getElementById('beforeAfterWrap');
+  const before  = document.getElementById('baBefore');
+  const divider = document.getElementById('baDivider');
+
+  if (!wrap) return;
+
+  let dragging = false;
+  let pct = 50;
+
+  function setPosition(x) {
+    const rect = wrap.getBoundingClientRect();
+    pct = Math.min(100, Math.max(0, ((x - rect.left) / rect.width) * 100));
+    before.style.width    = pct + '%';
+    divider.style.left    = pct + '%';
+  }
+
+  divider.addEventListener('mousedown',  function(e) { dragging = true; e.preventDefault(); });
+  divider.addEventListener('touchstart', function(e) { dragging = true; }, { passive: true });
+
+  document.addEventListener('mousemove', function(e) {
+    if (dragging) setPosition(e.clientX);
+  });
+  document.addEventListener('touchmove', function(e) {
+    if (dragging) setPosition(e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('mouseup',  function() { dragging = false; });
+  document.addEventListener('touchend', function() { dragging = false; });
+
+  // Click anywhere on wrap to jump
+  wrap.addEventListener('click', function(e) { setPosition(e.clientX); });
+
+  // Init
+  setPosition(wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width * 0.5);
+})();
+</script>
+
+</body>
+</html>

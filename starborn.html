@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starborn Orion — ADRIAN LEON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project_style.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAVIGATION ──────────────────────────────────────── -->
+<nav>
+  <a href="main.html" class="nav-logo">ADRIAN LEON</a>
+  <a href="main.html#work" class="nav-back">All Projects</a>
+</nav>
+
+<!-- ── PROJECT HERO ────────────────────────────────────── -->
+<section class="project-hero">
+  <div class="hero-bg">
+    <img src="imgs/StarbornOrion/0000.png" alt="Starborn Orion — Hero">
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-accent-line"></div>
+
+  <div class="project-hero-content">
+    <span class="project-category">Environment · Unreal Engine 5</span>
+    <h1 class="project-hero-title">Starborn Orion</h1>
+    <p class="project-hero-sub">A consecrated sanctuary buried beneath stone and silence — where the celestial meets the ancient, and torchlight is the only truth left standing.</p>
+
+    <div class="project-meta-row">
+      <div class="meta-pill"><span>Year</span>2025</div>
+      <div class="meta-pill"><span>Role</span>Solo Environment Artist</div>
+      <div class="meta-pill"><span>Engine</span>Unreal Engine 5</div>
+      <div class="meta-pill"><span>Type</span>Solo Environment</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN BODY ────────────────────────────────────────── -->
+<main class="project-body">
+
+  <!-- ── INTRO ── -->
+  <div class="project-intro-grid">
+    <div class="project-description">
+      <span class="section-label">The Vision</span>
+      <h2 class="section-title">Where the divine<br>was buried alive</h2>
+
+      <div class="ornate-divider" style="margin-bottom: 32px;">
+        <div class="ornate-divider-glyph">✦</div>
+      </div>
+
+      <p>Starborn Orion began as a study in reverence and ruin — the question of what a sacred space looks like when faith outlasts the civilization that built it. The crypt descends through centuries of silence, its stone walls worn smooth by hands that no longer exist, its torches still burning for a congregation long since dust.</p>
+
+      <p>At the heart of the chamber stands the Orion figure — a winged guardian rendered in cold stone, neither god nor man, suspended between devotion and decay. Every sightline in the space was designed to draw the eye toward it, first from the archway entrance, then gradually revealed as the corridor opens into the sanctuary. The statue is the emotional anchor; the environment exists to earn that moment.</p>
+
+      <p>Lighting was the core technical challenge. Lumen global illumination allowed the warm flicker of candles and wall torches to interact dynamically with the rough-cut stonework, casting rolling shadows that breathe life into an otherwise still scene. The palette was intentionally kept in warm amber and deep ochre — the feeling of buried warmth, light that has never touched the sun.</p>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="project-details-card">
+      <span class="section-label" style="margin-bottom: 28px;">Project Details</span>
+
+      <div class="detail-item">
+        <span class="detail-label">Type</span>
+        <span class="detail-value">Environment Study</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Setting</span>
+        <span class="detail-value">Underground Sanctuary</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Primary Tool</span>
+        <span class="detail-value">Unreal Engine 5</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Modeling</span>
+        <span class="detail-value">Blender</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Texturing</span>
+        <span class="detail-value">Substance Painter</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Status</span>
+        <span class="detail-value" style="color: var(--accent-gold);">Complete</span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ── CAROUSEL ── -->
+  <div class="carousel-section">
+    <span class="section-label">Gallery</span>
+    <h2 class="section-title">Selected Renders</h2>
+
+    <div class="carousel-outer" id="carousel">
+      <div class="drag-hint">Drag to explore</div>
+
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="carousel-slide">
+            <img src="imgs/StarbornOrion/0000.png" alt="Full corridor overview">
+            <div class="slide-caption">Corridor Overview</div>
+            <span class="slide-index">01</span>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="imgs/StarbornOrion/0001.png" alt="Guardian statue — mid shot">
+            <div class="slide-caption">Guardian — Mid Shot</div>
+            <span class="slide-index">02</span>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="imgs/StarbornOrion/0002.png" alt="Guardian statue — close up">
+            <div class="slide-caption">Guardian — Close Up</div>
+            <span class="slide-index">03</span>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /track-wrap -->
+
+      <div class="carousel-controls">
+        <div class="carousel-arrows">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <div class="carousel-counter">
+          <span class="current" id="counterCurrent">01</span>
+          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
+          <span id="counterTotal">03</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── TECHNICAL SPECS ── -->
+  <div class="specs-section">
+    <span class="section-label">Under the Hood</span>
+    <h2 class="section-title">Technical Specifications</h2>
+
+    <div class="specs-grid">
+      <div class="spec-row">
+        <span class="spec-key">Triangle Count (Hero Statue)</span>
+        <span class="spec-val gold">~220k tris</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Texture Resolution</span>
+        <span class="spec-val">2K · 4K Hero Assets</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Lighting System</span>
+        <span class="spec-val gold">Lumen GI</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Geometry System</span>
+        <span class="spec-val">Nanite Enabled</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Unique Materials</span>
+        <span class="spec-val gold">19</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Dynamic Lights</span>
+        <span class="spec-val">Candles · Wall Torches</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Total Assets</span>
+        <span class="spec-val gold">62 Unique Meshes</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Render Mode</span>
+        <span class="spec-val">Real-time · Path Traced</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PREV / NEXT PROJECTS ── -->
+  <nav class="project-nav" aria-label="Project navigation">
+    <a href="deadrails.html" class="project-nav-item prev">
+      <span class="nav-item-arrow">←</span>
+      <span class="nav-item-text">
+        <span class="nav-item-label">Previous</span>
+        <span class="nav-item-title">Dead Rails</span>
+      </span>
+    </a>
+    <a href="odyssey.html" class="project-nav-item next">
+      <span class="nav-item-text">
+        <span class="nav-item-label">Next</span>
+        <span class="nav-item-title">Odyssey VR</span>
+      </span>
+      <span class="nav-item-arrow">→</span>
+    </a>
+  </nav>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <p>© 2025 ADRIAN LEON — All rights reserved</p>
+  <p>Built by your one and only meiuxx</p>
+</footer>
+
+<!-- ── SCRIPTS ─────────────────────────────────────────── -->
+
+<!-- Custom cursor -->
+<script>
+(function() {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+
+  document.addEventListener('mousemove', function(e) {
+    dot.style.left  = e.clientX + 'px';
+    dot.style.top   = e.clientY + 'px';
+    ring.style.left = e.clientX + 'px';
+    ring.style.top  = e.clientY + 'px';
+  });
+
+  document.querySelectorAll('a, button, .carousel-slide').forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      ring.style.width   = '50px';
+      ring.style.height  = '50px';
+      ring.style.opacity = '0.8';
+    });
+    el.addEventListener('mouseleave', function() {
+      ring.style.width   = '28px';
+      ring.style.height  = '28px';
+      ring.style.opacity = '0.5';
+    });
+  });
+})();
+</script>
+
+<!-- Carousel -->
+<script>
+(function() {
+  const track   = document.getElementById('carouselTrack');
+  const slides  = track.querySelectorAll('.carousel-slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsEl  = document.getElementById('carouselDots');
+  const counterCurrent = document.getElementById('counterCurrent');
+  const counterTotal   = document.getElementById('counterTotal');
+  const carouselOuter  = document.getElementById('carousel');
+
+  const total = slides.length;
+  let current = 0;
+
+  counterTotal.textContent = String(total).padStart(2, '0');
+
+  // Build dots
+  const dots = [];
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', function() { goTo(i); });
+    dotsEl.appendChild(d);
+    dots.push(d);
+  }
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    counterCurrent.textContent = String(current + 1).padStart(2, '0');
+  }
+
+  prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+  // Touch / drag swipe
+  let startX = 0, isDragging = false;
+
+  track.addEventListener('mousedown',  function(e) { startX = e.clientX; isDragging = true; });
+  track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+
+  track.addEventListener('mouseup', function(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    carouselOuter.classList.add('dragged');
+    const diff = e.clientX - startX;
+    if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
+  });
+  track.addEventListener('touchend', function(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    carouselOuter.classList.add('dragged');
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
+  });
+
+  track.querySelectorAll('img').forEach(function(img) {
+    img.addEventListener('dragstart', function(e) { e.preventDefault(); });
+  });
+})();
+</script>
+
+<!-- Scroll reveal for specs -->
+<script>
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.spec-row').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+</script>
+
+<!-- Before / After slider -->
+<script>
+(function() {
+  const wrap    = document.getElementById('beforeAfterWrap');
+  const before  = document.getElementById('baBefore');
+  const divider = document.getElementById('baDivider');
+
+  if (!wrap) return;
+
+  let dragging = false;
+
+  function setPosition(x) {
+    const rect = wrap.getBoundingClientRect();
+    const pct  = Math.min(100, Math.max(0, ((x - rect.left) / rect.width) * 100));
+    before.style.width  = pct + '%';
+    divider.style.left  = pct + '%';
+  }
+
+  divider.addEventListener('mousedown',  function(e) { dragging = true; e.preventDefault(); });
+  divider.addEventListener('touchstart', function(e) { dragging = true; }, { passive: true });
+
+  document.addEventListener('mousemove', function(e) {
+    if (dragging) setPosition(e.clientX);
+  });
+  document.addEventListener('touchmove', function(e) {
+    if (dragging) setPosition(e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('mouseup',  function() { dragging = false; });
+  document.addEventListener('touchend', function() { dragging = false; });
+
+  wrap.addEventListener('click', function(e) { setPosition(e.clientX); });
+
+  setPosition(wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width * 0.5);
+})();
+</script>
+
+</body>
+</html>
