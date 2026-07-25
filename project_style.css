@@ -486,52 +486,6 @@ nav:not(.project-nav) {
 }
 .carousel-outer.dragged .drag-hint { opacity: 0; }
 
-/* ── TECHNICAL SPECS ────────────────────────────────── */
-.specs-section {
-  margin-bottom: 100px;
-}
-
-.specs-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-  margin-top: 48px;
-}
-
-.spec-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 18px 24px;
-  background: var(--bg-mid);
-  border: 1px solid var(--border-ornate);
-  gap: 20px;
-  opacity: 0;
-  transform: translateX(-12px);
-  transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s;
-}
-.spec-row.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.spec-row:hover { background: rgba(201,168,76,0.03); }
-
-.spec-key {
-  font-family: var(--font-heading);
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  flex-shrink: 0;
-}
-.spec-val {
-  font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--text-primary);
-  text-align: right;
-}
-.spec-val.gold { color: var(--accent-gold); }
-
 /* ── PROJECT NAV (prev / next) — sticky bottom bar ─── */
 .project-nav {
   position: fixed;
