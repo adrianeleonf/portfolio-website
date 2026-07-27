@@ -552,11 +552,6 @@
     transition: transform 0.4s, filter 0.4s;
   }
 
-  .tool-card:hover .tool-icon-wrap {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 12px rgba(201,168,76,0.25));
-  }
-
   .tool-img {
     width: 72px;
     height: 72px;
