@@ -189,6 +189,103 @@
     </div>
   </div>
 
+<!-- second carousel section  ── -->
+
+  <div class="carousel-section">
+    <span class="section-label">Gallery</span>
+    <h2 class="section-title">Selected Renders</h2>
+
+    <div class="carousel-outer" id="carousel">
+      <div class="drag-hint">Drag to explore</div>
+
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carouselTrack2">
+
+          <a href="Alchemist.html">
+          <div class="carousel-slide2">
+            <img src="imgs/Alchemist Study/HighresScreenshot00003.png" alt="Overview shot">
+            <div class="slide-caption">Bookshelf Alcove</div>
+            <span class="slide-index">01</span>
+          </div></a>
+
+          <div class="carousel-slide2">
+            <img src="imgs/Alchemist Study/HighresScreenshot00005.png" alt="Detail shot">
+            <div class="slide-caption">Desk Detail — Candlelight Study</div>
+            <span class="slide-index">02</span>
+          </div>
+
+          <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/1.png" alt="Detail shot">
+            <div class="slide-caption">Bookshelf Showcase</div>
+            <span class="slide-index">03</span>
+          </div>
+
+          <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/2.png" alt="Detail shot">
+            <div class="slide-caption">desk showcase</div>
+            <span class="slide-index">04</span>
+          </div>
+
+          <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/3.png" alt="Detail shot">
+            <div class="slide-caption">Candle Showcase</div>
+            <span class="slide-index">05</span>
+          </div>
+          
+          <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/4.png" alt="Detail shot">
+            <div class="slide-caption">Cauldron Showcase</div>
+            <span class="slide-index">06</span>
+          </div>
+
+          <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/5.png" alt="Detail shot">
+            <div class="slide-caption">Chest Showcase</div>
+            <span class="slide-index">07</span>
+          </div>
+
+                    <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/6.png" alt="Detail shot">
+            <div class="slide-caption">Orb Showcase</div>
+            <span class="slide-index">08</span>
+          </div>
+
+                    <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/7.png" alt="Detail shot">
+            <div class="slide-caption">Door Showcase</div>
+            <span class="slide-index">09</span>
+          </div>
+
+                    <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props//Showcase/8.png" alt="Detail shot">
+            <div class="slide-caption">staff Showcase</div>
+            <span class="slide-index">10</span>
+          </div>
+
+          <div class="carousel-slide2" style="background: #0d0b10; display:flex; align-items:center; justify-content:center;">
+            <img src="imgs/Alchemist Study/Props/Showcase/9.png" alt="Detail shot">
+            <div class="slide-caption">staff showcase</div>
+            <span class="slide-index">11</span>
+          </div>
+        </div><!-- /track -->
+      </div><!-- /track-wrap -->
+
+      <div class="carousel-controls">
+        <div class="carousel-arrows">
+          <button class="carousel-btn" id="prevBtn2" aria-label="Previous">←</button>
+          <button class="carousel-btn" id="nextBtn2" aria-label="Next">→</button>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <div class="carousel-counter">
+          <span class="current" id="counterCurrent">01</span>
+          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
+          <span id="counterTotal">05</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- ── PREV / NEXT PROJECTS ── -->
   <!-- EDIT: href, label, and title for each project -->
   <nav class="project-nav" aria-label="Project navigation">
@@ -336,6 +433,21 @@
   });
 })();
 </script>
+
+<!-- my attempt on creating the same concept  -->
+ 
+<!-- Second  Carousel -->
+
+<script>
+(function() {
+
+  const track  = document.getElementById('carouselTrack2');
+  const slides = track.querySelectorAll('carousel-slide2');
+
+})();
+
+</script>
+
 
 </body>
 </html>
