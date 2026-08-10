@@ -423,7 +423,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 460px 340px;
+    grid-template-rows: 400px 460px 340px;
     gap: 3px;
   }
 
@@ -434,17 +434,20 @@
     background: var(--bg-mid);
   }
 
-  /* Row 1: Card 1 — wide left (7 cols), Card 2 — narrow right (5 cols) */
-  .portfolio-item:nth-child(1) { grid-column: 1 / 8;  grid-row: 1; }
-  .portfolio-item:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }
-  /* Row 2: Card 3 — narrow left (5 cols), Card 4 — wide right (7 cols) */
-  .portfolio-item:nth-child(3) { grid-column: 1 / 6;  grid-row: 2; }
-  .portfolio-item:nth-child(4) { grid-column: 6 / 13; grid-row: 2; }
+  /* Row 1: Card 1 — full-width feature (Bellum) */
+  .portfolio-item:nth-child(1) { grid-column: 1 / 13; grid-row: 1; }
+  /* Row 2: Card 2 — wide left (7 cols), Card 3 — narrow right (5 cols) */
+  .portfolio-item:nth-child(2) { grid-column: 1 / 8;  grid-row: 2; }
+  .portfolio-item:nth-child(3) { grid-column: 8 / 13; grid-row: 2; }
+  /* Row 3: Card 4 — narrow left (5 cols), Card 5 — wide right (7 cols) */
+  .portfolio-item:nth-child(4) { grid-column: 1 / 6;  grid-row: 3; }
+  .portfolio-item:nth-child(5) { grid-column: 6 / 13; grid-row: 3; }
 
-  .portfolio-item:nth-child(1) .item-bg { background: linear-gradient(135deg, #1a0d2e 0%, #0d1520 100%); }
-  .portfolio-item:nth-child(2) .item-bg { background: linear-gradient(135deg, #1a0a0a 0%, #2a1a0a 100%); }
-  .portfolio-item:nth-child(3) .item-bg { background: linear-gradient(135deg, #0a0a1a 0%, #0a1a14 100%); }
-  .portfolio-item:nth-child(4) .item-bg { background: linear-gradient(135deg, #1a1204 0%, #0d0820 100%); }
+  .portfolio-item:nth-child(1) .item-bg { background: linear-gradient(135deg, #141a0d 0%, #1a0d0d 100%); }
+  .portfolio-item:nth-child(2) .item-bg { background: linear-gradient(135deg, #1a0d2e 0%, #0d1520 100%); }
+  .portfolio-item:nth-child(3) .item-bg { background: linear-gradient(135deg, #1a0a0a 0%, #2a1a0a 100%); }
+  .portfolio-item:nth-child(4) .item-bg { background: linear-gradient(135deg, #0a0a1a 0%, #0a1a14 100%); }
+  .portfolio-item:nth-child(5) .item-bg { background: linear-gradient(135deg, #1a1204 0%, #0d0820 100%); }
 
   .item-bg {
     position: absolute;
