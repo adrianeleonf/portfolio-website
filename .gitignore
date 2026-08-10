@@ -8,6 +8,7 @@ _site/
 .jekyll-metadata
 .vs
 .github
+.claude
 
 # Additional Ruby/bundler ignore for when you run: bundle install
 /vendor

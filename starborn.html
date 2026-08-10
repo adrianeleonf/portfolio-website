@@ -14,6 +14,18 @@
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- ── LIGHTBOX ──────────────────────────────────────── -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous">←</button>
+  <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next">→</button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+</div>
+
 <!-- ── NAVIGATION ──────────────────────────────────────── -->
 <nav>
   <a href="index.html" class="nav-logo">ADRIAN LEON</a>
@@ -98,11 +110,11 @@
     <span class="section-label">Gallery</span>
     <h2 class="section-title">Selected Renders</h2>
 
-    <div class="carousel-outer" id="carousel">
+    <div class="carousel-outer">
       <div class="drag-hint">Drag to explore</div>
 
       <div class="carousel-track-wrap">
-        <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-track">
 
           <div class="carousel-slide">
             <img src="imgs/StarbornOrion/0000.png" alt="Full corridor overview">
@@ -127,14 +139,14 @@
 
       <div class="carousel-controls">
         <div class="carousel-arrows">
-          <button class="carousel-btn" id="prevBtn" aria-label="Previous">←</button>
-          <button class="carousel-btn" id="nextBtn" aria-label="Next">→</button>
+          <button class="carousel-btn prev" aria-label="Previous">←</button>
+          <button class="carousel-btn next" aria-label="Next">→</button>
         </div>
-        <div class="carousel-dots" id="carouselDots"></div>
+        <div class="carousel-dots"></div>
         <div class="carousel-counter">
-          <span class="current" id="counterCurrent">01</span>
+          <span class="current counter-current">01</span>
           <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
-          <span id="counterTotal">03</span>
+          <span class="counter-total">03</span>
         </div>
       </div>
     </div>
@@ -196,74 +208,135 @@
 })();
 </script>
 
-<!-- Carousel -->
+<!-- Carousel + Lightbox (supports multiple independent slideshows per page) -->
 <script>
 (function() {
-  const track   = document.getElementById('carouselTrack');
-  const slides  = track.querySelectorAll('.carousel-slide');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const dotsEl  = document.getElementById('carouselDots');
-  const counterCurrent = document.getElementById('counterCurrent');
-  const counterTotal   = document.getElementById('counterTotal');
-  const carouselOuter  = document.getElementById('carousel');
+  const lightbox        = document.getElementById('lightbox');
+  const lightboxImg      = document.getElementById('lightboxImg');
+  const lightboxCaption  = document.getElementById('lightboxCaption');
+  const lightboxCounter  = document.getElementById('lightboxCounter');
+  const lightboxClose    = document.getElementById('lightboxClose');
+  const lightboxPrev     = document.getElementById('lightboxPrev');
+  const lightboxNext     = document.getElementById('lightboxNext');
 
-  const total = slides.length;
-  let current = 0;
+  let activeItems = [];
+  let activeIndex = 0;
 
-  counterTotal.textContent = String(total).padStart(2, '0');
-
-  // Build dots
-  const dots = [];
-  for (let i = 0; i < total; i++) {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    d.addEventListener('click', function() { goTo(i); });
-    dotsEl.appendChild(d);
-    dots.push(d);
+  function updateLightbox() {
+    const item = activeItems[activeIndex];
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.alt;
+    lightboxCaption.textContent = item.caption;
+    lightboxCounter.textContent = String(activeIndex + 1).padStart(2, '0') + ' / ' + String(activeItems.length).padStart(2, '0');
   }
 
-  function goTo(idx) {
-    current = (idx + total) % total;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === current);
-    });
-    counterCurrent.textContent = String(current + 1).padStart(2, '0');
+  function openLightbox(items, index) {
+    activeItems = items;
+    activeIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 
-  prevBtn.addEventListener('click', function() { goTo(current - 1); });
-  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
+  function lightboxGo(delta) {
+    activeIndex = (activeIndex + delta + activeItems.length) % activeItems.length;
+    updateLightbox();
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', function() { lightboxGo(-1); });
+  lightboxNext.addEventListener('click', function() { lightboxGo(1); });
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft')  goTo(current - 1);
-    if (e.key === 'ArrowRight') goTo(current + 1);
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  lightboxGo(-1);
+    if (e.key === 'ArrowRight') lightboxGo(1);
   });
 
-  // Touch / drag swipe
-  let startX = 0, isDragging = false;
+  document.querySelectorAll('.carousel-outer').forEach(function(carouselOuter) {
+    const track   = carouselOuter.querySelector('.carousel-track');
+    const slides  = Array.from(track.querySelectorAll('.carousel-slide'));
+    const prevBtn = carouselOuter.querySelector('.carousel-btn.prev');
+    const nextBtn = carouselOuter.querySelector('.carousel-btn.next');
+    const dotsEl  = carouselOuter.querySelector('.carousel-dots');
+    const counterCurrent = carouselOuter.querySelector('.counter-current');
+    const counterTotal   = carouselOuter.querySelector('.counter-total');
 
-  track.addEventListener('mousedown',  function(e) { startX = e.clientX; isDragging = true; });
-  track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+    const total = slides.length;
+    let current = 0;
+    if (!total) return;
 
-  track.addEventListener('mouseup', function(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    carouselOuter.classList.add('dragged');
-    const diff = e.clientX - startX;
-    if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
-  });
-  track.addEventListener('touchend', function(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    carouselOuter.classList.add('dragged');
-    const diff = e.changedTouches[0].clientX - startX;
-    if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
-  });
+    counterTotal.textContent = String(total).padStart(2, '0');
 
-  track.querySelectorAll('img').forEach(function(img) {
-    img.addEventListener('dragstart', function(e) { e.preventDefault(); });
+    // Build dots
+    const dots = [];
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', function() { goTo(i); });
+      dotsEl.appendChild(d);
+      dots.push(d);
+    }
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === current);
+      });
+      counterCurrent.textContent = String(current + 1).padStart(2, '0');
+    }
+
+    prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+    // Touch / drag swipe
+    let startX = 0, isDragging = false, suppressClick = false;
+
+    track.addEventListener('mousedown',  function(e) { startX = e.clientX; isDragging = true; });
+    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+
+    track.addEventListener('mouseup', function(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      carouselOuter.classList.add('dragged');
+      const diff = e.clientX - startX;
+      if (Math.abs(diff) > 5)  suppressClick = true;
+      if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
+    });
+    track.addEventListener('touchend', function(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      carouselOuter.classList.add('dragged');
+      const diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 5)  suppressClick = true;
+      if (Math.abs(diff) > 60) diff < 0 ? goTo(current + 1) : goTo(current - 1);
+    });
+
+    track.querySelectorAll('img').forEach(function(img) {
+      img.addEventListener('dragstart', function(e) { e.preventDefault(); });
+    });
+
+    // Lightbox — only plain images open fullscreen (video/iframe slides are skipped)
+    const imgs  = slides.map(function(slide) { return slide.querySelector('img'); }).filter(Boolean);
+    const items = imgs.map(function(img) {
+      const caption = img.closest('.carousel-slide').querySelector('.slide-caption');
+      return { src: img.src, alt: img.alt, caption: caption ? caption.textContent : '' };
+    });
+
+    imgs.forEach(function(img, i) {
+      img.addEventListener('click', function() {
+        if (suppressClick) { suppressClick = false; return; }
+        openLightbox(items, i);
+      });
+    });
   });
 })();
 </script>

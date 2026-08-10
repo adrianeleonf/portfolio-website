@@ -343,8 +343,12 @@
 
   .about-image-frame {
     position: relative;
-    aspect-ratio: 3/4;
+    width: 100%;
+    aspect-ratio: 1/1;
+    max-width: 420px;
+    margin: 0 auto;
     border: 1px solid var(--border-ornate);
+    border-radius: 50%;
     overflow: hidden;
   }
 
@@ -360,6 +364,7 @@
     position: absolute;
     inset: 8px;
     border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 50%;
     pointer-events: none;
   }
 
@@ -696,7 +701,7 @@
     #hero { padding: 0 24px 60px; }
 
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .about-image-frame { aspect-ratio: 4/3; }
+    .about-image-frame { aspect-ratio: 1/1; max-width: 280px; }
 
     .portfolio-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
     .portfolio-item { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 4/3 !important; }
