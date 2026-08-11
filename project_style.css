@@ -1,11 +1,11 @@
 :root {
-  --accent-gold: #c9a84c;
-  --accent-silver: #b8b8c8;
-  --bg-deep: #050407;
-  --bg-mid: #0d0b10;
-  --text-primary: #e8e4d8;
-  --text-muted: #8a8070;
-  --border-ornate: #2a2430;
+  --accent-gold: #b3a08f;
+  --accent-silver: #c9c2b8;
+  --bg-deep: #070605;
+  --bg-mid: #0e0c0a;
+  --text-primary: #d9d0c3;
+  --text-muted: #8a8078;
+  --border-ornate: #35302a;
   --font-display: 'Cinzel Decorative', serif;
   --font-heading: 'Cinzel', serif;
   --font-body: 'EB Garamond', serif;
@@ -70,11 +70,24 @@ nav:not(.project-nav) {
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-display);
   font-size: 15px;
   letter-spacing: 0.3em;
   text-decoration: none;
   text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.nav-logo span {
   background: linear-gradient(90deg, var(--accent-gold) 0%, #fff8e7 40%, var(--accent-gold) 60%, #b8860b 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
