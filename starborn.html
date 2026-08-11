@@ -166,17 +166,17 @@
 
   <!-- ── PREV / NEXT PROJECTS ── -->
   <nav class="project-nav" aria-label="Project navigation">
-    <a href="deadrails.html" class="project-nav-item prev">
+    <a href="alchemist.html" class="project-nav-item prev">
       <span class="nav-item-arrow">←</span>
       <span class="nav-item-text">
         <span class="nav-item-label">Previous</span>
-        <span class="nav-item-title">Dead Rails</span>
+        <span class="nav-item-title">Alchemist Study</span>
       </span>
     </a>
-    <a href="odyssey.html" class="project-nav-item next">
+    <a href="deadrails.html" class="project-nav-item next">
       <span class="nav-item-text">
         <span class="nav-item-label">Next</span>
-        <span class="nav-item-title">Odyssey VR</span>
+        <span class="nav-item-title">Dead Rails</span>
       </span>
       <span class="nav-item-arrow">→</span>
     </a>
@@ -488,43 +488,6 @@
   document.querySelectorAll('.spec-row').forEach(function(el) {
     observer.observe(el);
   });
-})();
-</script>
-
-<!-- Before / After slider -->
-<script>
-(function() {
-  const wrap    = document.getElementById('beforeAfterWrap');
-  const before  = document.getElementById('baBefore');
-  const divider = document.getElementById('baDivider');
-
-  if (!wrap) return;
-
-  let dragging = false;
-
-  function setPosition(x) {
-    const rect = wrap.getBoundingClientRect();
-    const pct  = Math.min(100, Math.max(0, ((x - rect.left) / rect.width) * 100));
-    before.style.width  = pct + '%';
-    divider.style.left  = pct + '%';
-  }
-
-  divider.addEventListener('mousedown',  function(e) { dragging = true; e.preventDefault(); });
-  divider.addEventListener('touchstart', function(e) { dragging = true; }, { passive: true });
-
-  document.addEventListener('mousemove', function(e) {
-    if (dragging) setPosition(e.clientX);
-  });
-  document.addEventListener('touchmove', function(e) {
-    if (dragging) setPosition(e.touches[0].clientX);
-  }, { passive: true });
-
-  document.addEventListener('mouseup',  function() { dragging = false; });
-  document.addEventListener('touchend', function() { dragging = false; });
-
-  wrap.addEventListener('click', function(e) { setPosition(e.clientX); });
-
-  setPosition(wrap.getBoundingClientRect().left + wrap.getBoundingClientRect().width * 0.5);
 })();
 </script>
 
