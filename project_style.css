@@ -674,20 +674,16 @@ nav:not(.project-nav) {
   display: block;
 }
 
-/* Before image — clipped layer on top */
+/* Before image — same full-size layer as after, revealed via clip-path so it stays perfectly registered */
 .ba-before {
   position: absolute;
   inset: 0;
-  width: 50%;
-  overflow: hidden;
+  clip-path: inset(0 50% 0 0);
 }
 .ba-before img {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-  /* Make sure it always shows full-width even though container is clipped */
-  min-width: calc(100vw - 120px);
-  max-width: none;
 }
 
 /* Divider line */
