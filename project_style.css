@@ -862,6 +862,7 @@ footer p {
 /* ── RESPONSIVE ────────────────────────────────────── */
 @media (max-width: 900px) {
   nav { padding: 24px; }
+  .nav-logo span { display: none; }
 
   .project-hero-content { padding: 0 24px 48px; }
   .hero-accent-line { left: 24px; }

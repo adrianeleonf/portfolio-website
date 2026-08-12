@@ -120,6 +120,48 @@
   .nav-links a:hover { color: var(--accent-gold); }
   .nav-links a:hover::after { transform: scaleX(1); }
 
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 6px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 502;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--accent-gold);
+    transition: transform 0.3s, opacity 0.3s, width 0.3s;
+  }
+
+  .nav-toggle span:nth-child(2) { width: 70%; }
+
+  .nav-toggle.active span { width: 100%; }
+  .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,4,7,0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 498;
+  }
+
+  .nav-overlay.visible { opacity: 1; }
+
   /* ── HERO SECTION ──────────────────────────────────── */
   #hero {
     position: relative;
@@ -149,7 +191,7 @@
 
   .hero-flourish {
     width: 100%;
-    max-width: 460px;
+    max-width: 320px;
     margin: 0 auto 24px;
     opacity: 0;
     animation: fadeUp 1.2s ease 0.3s forwards;
@@ -693,7 +735,32 @@
   /* ── RESPONSIVE ────────────────────────────────────── */
   @media (max-width: 900px) {
     nav { padding: 24px 24px; }
-    .nav-links { gap: 24px; }
+
+    .nav-toggle { display: flex; }
+    .nav-overlay { display: block; pointer-events: none; }
+    .nav-overlay.visible { pointer-events: auto; }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(280px, 80vw);
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 32px;
+      margin: 0;
+      padding: 24px 40px;
+      background: rgba(5,4,7,0.98);
+      backdrop-filter: blur(10px);
+      border-left: 1px solid var(--border-ornate);
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+      z-index: 501;
+    }
+
+    .nav-links.open { transform: translateX(0); }
 
     section { padding: 80px 24px; }
     #hero { padding: 0 24px 60px; }
