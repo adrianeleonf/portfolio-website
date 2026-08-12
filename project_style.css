@@ -168,6 +168,15 @@ nav:not(.project-nav) {
   width: 100%;
 }
 
+.project-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
 .project-category {
   font-family: var(--font-heading);
   font-size: 10px;
@@ -175,17 +184,7 @@ nav:not(.project-nav) {
   color: var(--accent-gold);
   text-transform: uppercase;
   display: block;
-  margin-bottom: 16px;
-  opacity: 0;
-  animation: fadeUp 0.8s ease 0.3s forwards;
-}
-
-.project-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 88px);
-  line-height: 1;
-  color: var(--text-primary);
-  margin-bottom: 20px;
+  margin-top: 20px;
   opacity: 0;
   animation: fadeUp 0.8s ease 0.5s forwards;
 }
