@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bellum — ADRIAN LEON</title>
+<title>Odyssey VR — ADRIAN LEON</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="project_style.css">
-
+<link rel="stylesheet" href="/base.css">
+<link rel="stylesheet" href="/project_style.css">
 </head>
 <body>
 
@@ -35,7 +34,7 @@
 
 <!-- ── NAVIGATION ──────────────────────────────────────── -->
 <nav>
-  <a href="index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <svg class="brand-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none">
       <circle cx="30" cy="30" r="27" stroke="currentColor" stroke-width="0.4" opacity="0.5"/>
       <rect x="12" y="12" width="36" height="36" transform="rotate(45 30 30)" stroke="currentColor" stroke-width="0.75"/>
@@ -43,31 +42,31 @@
     </svg>
     <span>Adrian Leon</span>
   </a>
-  <a href="index.html#work" class="nav-back">All Projects</a>
+  <a href="/#work" class="nav-back">All Projects</a>
 </nav>
 
 <!-- ── PROJECT RAIL ───────────────────────────────────── -->
 <aside class="project-capsule" aria-label="Switch project">
-  <div class="capsule-shell">
+  <div class="capsule-shell" style="--capsule-offset: -232px;">
     <span class="capsule-corner capsule-corner--tl"></span>
     <span class="capsule-corner capsule-corner--tr"></span>
     <span class="capsule-corner capsule-corner--bl"></span>
     <span class="capsule-corner capsule-corner--br"></span>
     <div class="capsule-items">
-      <a href="bellum.html" class="capsule-item active">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/bellum.webp" alt="" loading="lazy"></span>
+      <a href="/bellum/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/bellum.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="alchemist.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/alchemist.webp" alt="" loading="lazy"></span>
+      <a href="/alchemist/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/alchemist.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="deadrails.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/deadrails.webp" alt="" loading="lazy"></span>
+      <a href="/deadrails/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/deadrails.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="starborn.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/starborn.webp" alt="" loading="lazy"></span>
+      <a href="/starborn/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/starborn.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="odyssey.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/odyssey.webp" alt="" loading="lazy"></span>
+      <a href="/odyssey/" class="capsule-item active">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/odyssey.webp" alt="" loading="lazy"></span>
       </a>
     </div>
   </div>
@@ -83,14 +82,14 @@
 <!-- ── PROJECT HERO ────────────────────────────────────── -->
 <section class="project-hero">
   <div class="hero-bg">
-    <img src="imgs/Bellum/home_03.webp" alt="Bellum — Hero">
+    <img src="/imgs/Odyssey/EmergencyLights.png" alt="Odyssey VR — Hero">
   </div>
   <div class="hero-veil"></div>
   <div class="hero-accent-line"></div>
 
   <div class="project-hero-content">
-    <h1 class="project-hero-title">Bellum</h1>
-    <span class="project-category">Platoon-Scale Tactical Shooter - Unreal Engine</span>
+    <h1 class="project-hero-title">Odyssey VR</h1>
+    <span class="project-category">VR Experience - Unreal Engine</span>
   </div>
 </section>
 
@@ -106,11 +105,9 @@
         <div class="ornate-divider-glyph">࿇</div>
       </div>
 
-      <p>Bellum is a next-generation, platoon-scale tactical shooter for eighty players. I worked on the creation of assets across every scale — from props to full-scale buildings, along with the decals and trim sheets — while working closely with the Environment Lead to keep art direction and technical standards consistent across the team. More specific contributions are covered under NDA — happy to walk through them in more detail during an interview.</p>
+      <p>Odyssey is a virtual reality project I worked on as lead environment artist — a psychological horror experience set aboard a station that's been dark for years. The objective is to complete a set of tasks scattered through its corridors in order to reach the escape pods and leave.</p>
 
-      <p>Built in Unreal Engine 5 with Lumen and Nanite, the environments leaned heavily on optimization from the beginning of the process, with a strong focus on material work and the techniques used to sell detail at scale.</p>
-
-      <p><a href="https://playbellum.com/" target="_blank" rel="noopener" style="color: var(--accent-gold); text-decoration: underline;">Visit the official Bellum website →</a></p>
+      <p>One of the biggest challenges we faced was performance. VR demands a much higher, more consistent frame rate than a standard game, so the environments leaned on modular kits, tileable textures, and trim sheets to keep everything lightweight without losing the density of detail the horror needed.</p>
     </div>
 
     <!-- Sidebar -->
@@ -119,31 +116,31 @@
 
       <div class="detail-item">
         <span class="detail-label">Studio / Context</span>
-        <span class="detail-value">Astarte Industries</span>
+        <span class="detail-value">College Team Project</span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Genre</span>
-        <span class="detail-value">Platoon-Scale Tactical Shooter</span>
+        <span class="detail-value">VR Experience</span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Focus</span>
-        <span class="detail-value">Environment Art</span>
+        <span class="detail-value">Environment Art, Technical Art</span>
       </div>
     </aside>
   </div>
 
-  <!-- ── TRAILER ── -->
+  <!-- ── VIDEO ── -->
   <div class="video-section">
-    <h2 class="section-title">Trailer</h2>
+    <h2 class="section-title">VR Flythrough</h2>
 
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/ATiXzTFGjcM" title="Bellum Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="video-wrap" id="videoWrap">
+      <iframe src="https://www.youtube.com/embed/kRAEnEfSEvQ" title="Odyssey VR Flythrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 
   <!-- ── CAROUSEL ── -->
   <div class="carousel-section">
-    <h2 class="section-title">Selected Renders</h2>
+    <h2 class="section-title">Beauty Renders</h2>
 
     <div class="carousel-outer">
       <div class="drag-hint">Drag to explore</div>
@@ -152,21 +149,27 @@
         <div class="carousel-track">
 
           <div class="carousel-slide">
-            <img src="imgs/Bellum/home_03.webp" alt="Manda village — environment establishing shot" loading="lazy">
-            <div class="slide-caption">Manda Village — Environment Establishing Shot</div>
+            <img src="/imgs/Odyssey/EmergencyLights.png" alt="Emergency lighting — breach corridor" loading="lazy">
+            <div class="slide-caption">Emergency Lighting — Breach Corridor</div>
             <span class="slide-index">01</span>
           </div>
 
           <div class="carousel-slide">
-            <img src="imgs/Bellum/gameplay_02.webp" alt="Firefight — compound courtyard" loading="lazy">
-            <div class="slide-caption">Firefight — Compound Courtyard</div>
+            <img src="/imgs/Odyssey/HighresScreenshot00000.webp" alt="Main corridor — operational lighting" loading="lazy">
+            <div class="slide-caption">Main Corridor — Operational Lighting</div>
             <span class="slide-index">02</span>
           </div>
 
           <div class="carousel-slide">
-            <img src="imgs/Bellum/gameplay_01.webp" alt="Field medevac — combat aftermath" loading="lazy">
-            <div class="slide-caption">Field Medevac — Combat Aftermath</div>
+            <img src="/imgs/Odyssey/HighresScreenshot00001.webp" alt="Docking module — industrial bays" loading="lazy">
+            <div class="slide-caption">Docking Module — Industrial Bays</div>
             <span class="slide-index">03</span>
+          </div>
+
+          <div class="carousel-slide">
+            <img src="/imgs/Odyssey/HighresScreenshot00002.webp" alt="Collapsed section — blackout zone" loading="lazy">
+            <div class="slide-caption">Collapsed Section — Blackout Zone</div>
+            <span class="slide-index">04</span>
           </div>
 
         </div><!-- /track -->
@@ -181,7 +184,7 @@
         <div class="carousel-counter">
           <span class="current counter-current">01</span>
           <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
-          <span class="counter-total">03</span>
+          <span class="counter-total">04</span>
         </div>
       </div>
     </div>
@@ -189,17 +192,17 @@
 
   <!-- ── PREV / NEXT PROJECTS ── -->
   <nav class="project-nav" aria-label="Project navigation">
-    <a href="odyssey.html" class="project-nav-item prev">
+    <a href="/deadrails/" class="project-nav-item prev">
       <span class="nav-item-arrow">←</span>
       <span class="nav-item-text">
         <span class="nav-item-label">Previous</span>
-        <span class="nav-item-title">Odyssey VR</span>
+        <span class="nav-item-title">Dead Rails</span>
       </span>
     </a>
-    <a href="alchemist.html" class="project-nav-item next">
+    <a href="/bellum/" class="project-nav-item next">
       <span class="nav-item-text">
         <span class="nav-item-label">Next</span>
-        <span class="nav-item-title">Alchemist Study</span>
+        <span class="nav-item-title">Bellum</span>
       </span>
       <span class="nav-item-arrow">→</span>
     </a>
@@ -230,9 +233,9 @@
 </footer>
 
 <!-- ── SCRIPTS ─────────────────────────────────────────── -->
-<script src="js/cursor.js"></script>
-<script src="js/lightbox-carousel.js"></script>
-<script src="js/spec-reveal.js"></script>
+<script src="/js/cursor.js"></script>
+<script src="/js/lightbox-carousel.js"></script>
+<script src="/js/spec-reveal.js"></script>
 
 </body>
 </html>

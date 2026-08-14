@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dead Rails — ADRIAN LEON</title>
+<title>Bellum — ADRIAN LEON</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="project_style.css">
+<link rel="stylesheet" href="/base.css">
+<link rel="stylesheet" href="/project_style.css">
 
 </head>
 <body>
@@ -35,7 +35,7 @@
 
 <!-- ── NAVIGATION ──────────────────────────────────────── -->
 <nav>
-  <a href="index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <svg class="brand-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none">
       <circle cx="30" cy="30" r="27" stroke="currentColor" stroke-width="0.4" opacity="0.5"/>
       <rect x="12" y="12" width="36" height="36" transform="rotate(45 30 30)" stroke="currentColor" stroke-width="0.75"/>
@@ -43,31 +43,31 @@
     </svg>
     <span>Adrian Leon</span>
   </a>
-  <a href="index.html#work" class="nav-back">All Projects</a>
+  <a href="/#work" class="nav-back">All Projects</a>
 </nav>
 
 <!-- ── PROJECT RAIL ───────────────────────────────────── -->
 <aside class="project-capsule" aria-label="Switch project">
-  <div class="capsule-shell" style="--capsule-offset: -116px;">
+  <div class="capsule-shell">
     <span class="capsule-corner capsule-corner--tl"></span>
     <span class="capsule-corner capsule-corner--tr"></span>
     <span class="capsule-corner capsule-corner--bl"></span>
     <span class="capsule-corner capsule-corner--br"></span>
     <div class="capsule-items">
-      <a href="bellum.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/bellum.webp" alt="" loading="lazy"></span>
+      <a href="/bellum/" class="capsule-item active">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/bellum.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="alchemist.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/alchemist.webp" alt="" loading="lazy"></span>
+      <a href="/alchemist/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/alchemist.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="deadrails.html" class="capsule-item active">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/deadrails.webp" alt="" loading="lazy"></span>
+      <a href="/deadrails/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/deadrails.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="starborn.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/starborn.webp" alt="" loading="lazy"></span>
+      <a href="/starborn/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/starborn.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="odyssey.html" class="capsule-item">
-        <span class="capsule-thumb"><img src="imgs/DesignElements/capsule-thumbs/odyssey.webp" alt="" loading="lazy"></span>
+      <a href="/odyssey/" class="capsule-item">
+        <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/odyssey.webp" alt="" loading="lazy"></span>
       </a>
     </div>
   </div>
@@ -83,14 +83,14 @@
 <!-- ── PROJECT HERO ────────────────────────────────────── -->
 <section class="project-hero">
   <div class="hero-bg">
-    <img src="imgs/Dead Rails/Library Header.png">
+    <img src="/imgs/Bellum/home_03.webp" alt="Bellum — Hero">
   </div>
   <div class="hero-veil"></div>
   <div class="hero-accent-line"></div>
 
   <div class="project-hero-content">
-    <h1 class="project-hero-title">Dead Rails</h1>
-    <span class="project-category">Twin-Stick Shooter - Unreal Engine</span>
+    <h1 class="project-hero-title">Bellum</h1>
+    <span class="project-category">Platoon-Scale Tactical Shooter - Unreal Engine</span>
   </div>
 </section>
 
@@ -106,9 +106,11 @@
         <div class="ornate-divider-glyph">࿇</div>
       </div>
 
-      <p>Dead Rails is a co-op zombie survival game built around a single lifeline: the train. Working with a small team, I helped design and build the environments survivors move through, and was responsible for implementing props, modular assets, and environment pieces into the game world while keeping performance optimized for runtime.</p>
+      <p>Bellum is a next-generation, platoon-scale tactical shooter for eighty players. I worked on the creation of assets across every scale — from props to full-scale buildings, along with the decals and trim sheets — while working closely with the Environment Lead to keep art direction and technical standards consistent across the team. More specific contributions are covered under NDA — happy to walk through them in more detail during an interview.</p>
 
-      <p>My role extended beyond asset creation into shaping the project's mood and visual identity — designing a stylized, cel-shaded look with its own light-interaction rules, and building the modular assets and master material workflow needed to keep that style consistent while supporting procedural level generation and replayability.</p>
+      <p>Built in Unreal Engine 5 with Lumen and Nanite, the environments leaned heavily on optimization from the beginning of the process, with a strong focus on material work and the techniques used to sell detail at scale.</p>
+
+      <p><a href="https://playbellum.com/" target="_blank" rel="noopener" style="color: var(--accent-gold); text-decoration: underline;">Visit the official Bellum website →</a></p>
     </div>
 
     <!-- Sidebar -->
@@ -117,74 +119,53 @@
 
       <div class="detail-item">
         <span class="detail-label">Studio / Context</span>
-        <span class="detail-value">RedZip Studio</span>
+        <span class="detail-value">Astarte Industries</span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Genre</span>
-        <span class="detail-value">Twin-Stick Shooter</span>
+        <span class="detail-value">Platoon-Scale Tactical Shooter</span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Focus</span>
-        <span class="detail-value">Environment Art, Technical Art</span>
+        <span class="detail-value">Environment Art</span>
       </div>
     </aside>
   </div>
 
-  <!-- ── SECTION 1 — TRAILER ── -->
+  <!-- ── TRAILER ── -->
   <div class="video-section">
     <h2 class="section-title">Trailer</h2>
 
     <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/rY2gDrFt35g" title="Dead Rails Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/ATiXzTFGjcM" title="Bellum Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 
-  <!-- ── SLIDESHOW 2 — COLOR GRADING ── -->
-  <div class="beforeafter-section">
-    <h2 class="section-title">Color Grading</h2>
+  <!-- ── CAROUSEL ── -->
+  <div class="carousel-section">
+    <h2 class="section-title">Selected Renders</h2>
 
-    <div class="beforeafter-wrap" id="beforeAfterWrap">
-      <div class="ba-after">
-        <img src="imgs/Dead Rails/ScreenShot00000.webp" alt="After colour correction" loading="lazy">
-      </div>
-      <div class="ba-before" id="baBefore">
-        <img src="imgs/Dead Rails/ScreenShot00001.webp" alt="Before colour correction" loading="lazy">
-      </div>
-
-      <!-- Divider line + handle -->
-      <div class="ba-divider" id="baDivider">
-        <div class="ba-handle">
-          <span class="ba-arrow ba-arrow-left">‹</span>
-          <span class="ba-arrow ba-arrow-right">›</span>
-        </div>
-      </div>
-
-      <!-- Labels -->
-      <span class="ba-label ba-label-before">Before</span>
-      <span class="ba-label ba-label-after">After</span>
-    </div>
-
-    <div class="carousel-outer" style="margin-top: 28px;">
+    <div class="carousel-outer">
       <div class="drag-hint">Drag to explore</div>
 
       <div class="carousel-track-wrap">
         <div class="carousel-track">
 
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="imgs/Dead Rails/ColorCorrectionCurve.webp" alt="Color correction curve" loading="lazy">
-            <div class="slide-caption">Color Correction Curve</div>
+          <div class="carousel-slide">
+            <img src="/imgs/Bellum/home_03.webp" alt="Manda village — environment establishing shot" loading="lazy">
+            <div class="slide-caption">Manda Village — Environment Establishing Shot</div>
             <span class="slide-index">01</span>
           </div>
 
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="imgs/Dead Rails/LightingCurve.webp" alt="Lighting curve" loading="lazy">
-            <div class="slide-caption">Lighting Curve</div>
+          <div class="carousel-slide">
+            <img src="/imgs/Bellum/gameplay_02.webp" alt="Firefight — compound courtyard" loading="lazy">
+            <div class="slide-caption">Firefight — Compound Courtyard</div>
             <span class="slide-index">02</span>
           </div>
 
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="imgs/Dead Rails/CurveCelShader_MAT_MaterialGraph_0_00000.webp" alt="Post process material graph" loading="lazy">
-            <div class="slide-caption">Post Process Material</div>
+          <div class="carousel-slide">
+            <img src="/imgs/Bellum/gameplay_01.webp" alt="Field medevac — combat aftermath" loading="lazy">
+            <div class="slide-caption">Field Medevac — Combat Aftermath</div>
             <span class="slide-index">03</span>
           </div>
 
@@ -206,120 +187,19 @@
     </div>
   </div>
 
-  <!-- ── SLIDESHOW 3 — ANIMATIONS ── -->
-  <div class="carousel-section">
-    <h2 class="section-title">Animations</h2>
-
-    <div class="carousel-outer">
-      <div class="drag-hint">Drag to explore</div>
-
-      <div class="carousel-track-wrap">
-        <div class="carousel-track">
-
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="imgs/Dead Rails/SupplyCrateOpenAnim-ezgif.com-optimize.gif" alt="Supply crate opening animation" loading="lazy">
-            <div class="slide-caption">Supply Crate Opening Animation</div>
-            <span class="slide-index">01</span>
-          </div>
-
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="imgs/Dead Rails/CrateOpenAnim-ezgif.com-optimize.gif" alt="Crate opening animation" loading="lazy">
-            <div class="slide-caption">Crate Opening Animation</div>
-            <span class="slide-index">02</span>
-          </div>
-
-        </div><!-- /track -->
-      </div><!-- /track-wrap -->
-
-      <div class="carousel-controls">
-        <div class="carousel-arrows">
-          <button class="carousel-btn prev" aria-label="Previous">←</button>
-          <button class="carousel-btn next" aria-label="Next">→</button>
-        </div>
-        <div class="carousel-dots"></div>
-        <div class="carousel-counter">
-          <span class="current counter-current">01</span>
-          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
-          <span class="counter-total">02</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── SLIDESHOW 4 — MODULAR BUILDINGS ── -->
-  <div class="carousel-section">
-    <h2 class="section-title">Modular Buildings</h2>
-
-    <div class="carousel-outer">
-      <div class="drag-hint">Drag to explore</div>
-
-      <div class="carousel-track-wrap">
-        <div class="carousel-track">
-
-          <div class="carousel-slide">
-            <img src="imgs/Dead Rails/modularbuildings1.webp" alt="Modular barn — assembled" loading="lazy">
-            <div class="slide-caption">Modular Barn — Assembled</div>
-            <span class="slide-index">01</span>
-          </div>
-
-          <div class="carousel-slide">
-            <img src="imgs/Dead Rails/modularbuildings2.webp" alt="Modular barn — kit pieces" loading="lazy">
-            <div class="slide-caption">Modular Barn — Kit Pieces</div>
-            <span class="slide-index">02</span>
-          </div>
-
-          <div class="carousel-slide">
-            <img src="imgs/Dead Rails/modularbuildings3.webp" alt="Modular warehouse — assembled" loading="lazy">
-            <div class="slide-caption">Modular Warehouse — Assembled</div>
-            <span class="slide-index">03</span>
-          </div>
-
-          <div class="carousel-slide">
-            <img src="imgs/Dead Rails/modularbuildings4.webp" alt="Modular warehouse — kit pieces" loading="lazy">
-            <div class="slide-caption">Modular Warehouse — Kit Pieces</div>
-            <span class="slide-index">04</span>
-          </div>
-
-        </div><!-- /track -->
-      </div><!-- /track-wrap -->
-
-      <div class="carousel-controls">
-        <div class="carousel-arrows">
-          <button class="carousel-btn prev" aria-label="Previous">←</button>
-          <button class="carousel-btn next" aria-label="Next">→</button>
-        </div>
-        <div class="carousel-dots"></div>
-        <div class="carousel-counter">
-          <span class="current counter-current">01</span>
-          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
-          <span class="counter-total">04</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── SECTION 5 — MASTER MATERIAL ── -->
-  <div class="video-section">
-    <h2 class="section-title">Master Material</h2>
-
-    <div class="video-wrap">
-      <img src="imgs/Dead Rails/Base_MM_MaterialGraph_0_00000.webp" alt="Master material graph" loading="lazy">
-    </div>
-  </div>
-
   <!-- ── PREV / NEXT PROJECTS ── -->
   <nav class="project-nav" aria-label="Project navigation">
-    <a href="starborn.html" class="project-nav-item prev">
+    <a href="/odyssey/" class="project-nav-item prev">
       <span class="nav-item-arrow">←</span>
       <span class="nav-item-text">
         <span class="nav-item-label">Previous</span>
-        <span class="nav-item-title">Starborn Orion</span>
+        <span class="nav-item-title">Odyssey VR</span>
       </span>
     </a>
-    <a href="odyssey.html" class="project-nav-item next">
+    <a href="/alchemist/" class="project-nav-item next">
       <span class="nav-item-text">
         <span class="nav-item-label">Next</span>
-        <span class="nav-item-title">Odyssey VR</span>
+        <span class="nav-item-title">Alchemist Study</span>
       </span>
       <span class="nav-item-arrow">→</span>
     </a>
@@ -350,10 +230,9 @@
 </footer>
 
 <!-- ── SCRIPTS ─────────────────────────────────────────── -->
-<script src="js/cursor.js"></script>
-<script src="js/lightbox-carousel.js"></script>
-<script src="js/spec-reveal.js"></script>
-<script src="js/before-after-slider.js"></script>
+<script src="/js/cursor.js"></script>
+<script src="/js/lightbox-carousel.js"></script>
+<script src="/js/spec-reveal.js"></script>
 
 </body>
 </html>
