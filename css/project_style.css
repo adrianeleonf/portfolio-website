@@ -501,8 +501,8 @@ nav:not(.project-nav) {
   width: 18px;
   height: 18px;
   background-color: var(--accent-gold);
-  -webkit-mask-image: url("imgs/DesignElements/Corner.svg");
-  mask-image: url("imgs/DesignElements/Corner.svg");
+  -webkit-mask-image: url("/imgs/DesignElements/Corner.svg");
+  mask-image: url("/imgs/DesignElements/Corner.svg");
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;

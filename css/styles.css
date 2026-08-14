@@ -239,8 +239,8 @@
     width: var(--cta-corner-size);
     height: var(--cta-corner-size);
     background-color: var(--accent-gold);
-    -webkit-mask-image: url("imgs/DesignElements/Corner.svg");
-    mask-image: url("imgs/DesignElements/Corner.svg");
+    -webkit-mask-image: url("/imgs/DesignElements/Corner.svg");
+    mask-image: url("/imgs/DesignElements/Corner.svg");
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-repeat: no-repeat;
