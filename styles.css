@@ -6,7 +6,7 @@
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    transition: transform 0.1s;
+    transition: transform 0.1s, opacity 0.15s;
     transform: translate(-50%, -50%);
   }
   .cursor-ring {
@@ -16,7 +16,7 @@
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
-    transition: transform 0.18s ease, width 0.2s, height 0.2s;
+    transition: transform 0.18s ease, width 0.2s, height 0.2s, opacity 0.2s;
     transform: translate(-50%, -50%);
     opacity: 0.5;
   }
