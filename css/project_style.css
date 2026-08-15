@@ -46,12 +46,7 @@ nav:not(.project-nav) {
 }
 
 .nav-logo span {
-  background: linear-gradient(90deg, var(--accent-gold) 0%, #fff8e7 40%, var(--accent-gold) 60%, #b8860b 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: goldShimmer 4s linear infinite;
+  color: var(--accent-gold);
 }
 
 .nav-back {
@@ -597,14 +592,16 @@ nav:not(.project-nav) {
   color: var(--accent-gold);
 }
 
-/* ── PROJECT NAV (prev / next) — sticky bottom bar ─── */
+/* ── PROJECT NAV (prev / next) — retired in favor of the capsule
+   switcher, which now works on both desktop and mobile. Markup is
+   still in the page for now; kept hidden here rather than removed. */
 .project-nav {
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 400;
-  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
   border-top: 1px solid var(--border-ornate);
@@ -926,7 +923,10 @@ nav:not(.project-nav) {
 @media (max-width: 900px) {
   nav { padding: 24px; }
   .nav-logo span { display: none; }
-  .project-capsule { display: none; }
+
+  /* Custom cursor is a desktop-mouse effect; there's no persistent
+     pointer position on touch, so it's just visual clutter here. */
+  .cursor-dot, .cursor-ring { display: none; }
 
   .project-hero-content { padding: 0 24px 48px; }
   .hero-accent-line { left: 24px; }
@@ -939,11 +939,15 @@ nav:not(.project-nav) {
   }
   .project-details-card { position: static; }
 
-  .project-nav {
-    grid-template-columns: 1fr;
-  }
-
   footer { flex-direction: column; gap: 12px; text-align: center; }
+
+  /* Capsule switcher on touch: hover can't expand it, so tap toggles an
+     .expanded class instead (see js/capsule-touch.js). Once expanded,
+     every label is shown at once — there's no reliable per-item hover
+     on touch to reveal them individually like on desktop. */
+  .project-capsule.expanded .capsule-shell { max-height: 320px; }
+  .project-capsule.expanded .capsule-items { transform: translateY(0); }
+  .project-capsule.expanded .capsule-label { opacity: 1; }
 
   .lightbox { padding: 24px; }
   .lightbox-arrow { width: 44px; height: 44px; font-size: 18px; }
@@ -952,8 +956,4 @@ nav:not(.project-nav) {
   .lightbox-close { top: 12px; right: 12px; }
   .lightbox-zoom-controls { bottom: 12px; }
   .lightbox-zoom-btn { width: 36px; height: 36px; font-size: 16px; }
-}
-
-@media (min-width: 901px) {
-  .project-nav { display: none; }
 }

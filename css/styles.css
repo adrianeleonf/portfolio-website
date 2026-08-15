@@ -658,6 +658,10 @@
   @media (max-width: 900px) {
     nav { padding: 24px 24px; }
 
+    /* Custom cursor is a desktop-mouse effect; there's no persistent
+       pointer position on touch, so it's just visual clutter here. */
+    .cursor-dot, .cursor-ring { display: none; }
+
     .nav-toggle { display: flex; }
     .nav-overlay { display: block; pointer-events: none; }
     .nav-overlay.visible { pointer-events: auto; }
@@ -702,21 +706,10 @@
    ENHANCED ANIMATIONS
    ══════════════════════════════════════════════════ */
 
-/* ── 1. NAV LOGO — slow gold shimmer sweep ───────── */
+/* ── 1. NAV LOGO — flat accent-gold, matching the rest of the site ── */
 
 .nav-logo span {
-  background: linear-gradient(
-    90deg,
-    var(--accent-gold) 0%,
-    #fff8e7 40%,
-    var(--accent-gold) 60%,
-    #b8860b 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: goldShimmer 4s linear infinite;
+  color: var(--accent-gold);
 }
 
 /* ── 2. HERO TITLE — subtle gold text glow pulse ─── */

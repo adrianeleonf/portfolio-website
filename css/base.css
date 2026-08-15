@@ -40,6 +40,19 @@ body::before {
   opacity: 0.4;
 }
 
+/* Nav starts as a soft gradient scrim over the hero image, then switches
+   to a solid backing once the hero scrolls out from behind it — the
+   gradient alone isn't opaque enough to keep page content from bleeding
+   through and clashing with the nav text past that point. */
+nav:not(.project-nav) {
+  transition: background 0.3s ease;
+}
+nav:not(.project-nav).nav-solid {
+  background: rgba(7,6,5,0.96) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
 .brand-mark {
   width: 34px;
   height: 34px;
