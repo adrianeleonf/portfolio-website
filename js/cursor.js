@@ -1,4 +1,8 @@
 (function() {
+  // Pointless on touch: there's no persistent pointer position to
+  // track, and CSS already hides the dot/ring below this breakpoint.
+  if (window.matchMedia('(max-width: 900px)').matches) return;
+
   const dot  = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
 

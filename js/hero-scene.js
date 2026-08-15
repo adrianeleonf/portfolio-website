@@ -10,11 +10,46 @@
     cameraHeight: 3.5,
     cameraZ: 16,
     autoRotateSpeed: 0.0003,
-    particleCount: 600,
+    emberCount: 46,
+    emberNdcSpread: 0.3,
+    emberDepthNear: 3,
+    emberDepthFar: -7,
+    emberRiseHeight: 9,
+    baseFov: 55,
   };
+
+  /* The hero background is a flat photo (native 1920×1080) shown with
+     object-fit:cover, while this canvas is a 3D scene rendered at
+     whatever aspect ratio the viewport happens to be. Those two crop
+     independently by default, so anything positioned in 3D space (the
+     embers, the lighting) drifts out of alignment with the photo as
+     the aspect ratio changes. Compensating the camera's vertical FOV
+     to mirror how "cover" crops the image keeps them roughly locked
+     together instead of only matching the one aspect ratio this was
+     tuned at. */
+  const IMAGE_ASPECT = 1920 / 1080;
+
+  function fovForAspect(aspect) {
+    if (aspect <= IMAGE_ASPECT) return CONFIG.baseFov;
+    const baseHalfRad = (CONFIG.baseFov * Math.PI / 180) / 2;
+    const newHalfRad = Math.atan(Math.tan(baseHalfRad) * IMAGE_ASPECT / aspect);
+    return newHalfRad * 2 * 180 / Math.PI;
+  }
 
   const canvas = document.getElementById('three-canvas');
   const scene  = new THREE.Scene();
+
+  /* Three stacked cutouts (far room, statue, near pillars) standing in
+     for what used to be one flat photo. The statue stays put as the
+     anchor/focal point; the room behind it and the pillars in front of
+     it drift opposite each other around it for depth, instead of every
+     layer moving and nothing reading as "the" fixed subject. */
+  const heroLayers = [
+    { el: document.getElementById('hero-layer-bg'),      scale: 1.04, moveX: 8,  moveY: 5, dir: 1  },
+    { el: document.getElementById('hero-layer-statue'),  scale: 1.02, moveX: 0,  moveY: 0, dir: -1 },
+    { el: document.getElementById('hero-layer-beams'),   scale: 1,    moveX: 8,  moveY: 5, dir: 1  },
+    { el: document.getElementById('hero-layer-pillars'), scale: 1.07, moveX: 14, moveY: 8, dir: -1 },
+  ];
   scene.fog    = new THREE.FogExp2(CONFIG.fogColor, 0.035);
 
   /* Alpha: true + setClearColor alpha 0 = transparent canvas */
@@ -24,7 +59,7 @@
   renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
   renderer.setClearColor(0x000000, 0); /* fully transparent */
 
-  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+  const camera = new THREE.PerspectiveCamera(CONFIG.baseFov, 1, 0.1, 200);
   camera.position.set(0, CONFIG.cameraHeight, CONFIG.cameraZ);
   camera.lookAt(0, 4, 0);
 
@@ -33,15 +68,19 @@
     const h = canvas.parentElement.offsetHeight;
     renderer.setSize(w, h);
     camera.aspect = w / h;
+    camera.fov = fovForAspect(camera.aspect);
     camera.updateProjectionMatrix();
   }
   resize();
   window.addEventListener('resize', resize);
 
-  /* ── FLOOR ── */
+  /* ── FLOOR ── invisible (opacity 0, only here to receive shadows), but
+     without depthWrite:false it still writes to the depth buffer and
+     silently occludes anything behind it — including embers dipping
+     below y=0 near the bottom of the screen. */
 const floorMat = new THREE.MeshStandardMaterial({
   color: 0x18141e, roughness: 0.9, metalness: 0.1,
-  transparent: true, opacity: 0,
+  transparent: true, opacity: 0, depthWrite: false,
 });
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(80, 80, 20, 20), floorMat);
   floor.rotation.x = -Math.PI / 2;
@@ -76,20 +115,79 @@ const floorMat = new THREE.MeshStandardMaterial({
   hellLight.position.set(0, 0.5, -5);
   scene.add(hellLight);
 
-  /* ── PARTICLES ── */
-  const partGeo       = new THREE.BufferGeometry();
-  const partPositions = new Float32Array(CONFIG.particleCount * 3);
-  for (let i = 0; i < CONFIG.particleCount; i++) {
-    partPositions[i * 3]     = (Math.random() - 0.5) * 18;
-    partPositions[i * 3 + 1] = Math.random() * 14;
-    partPositions[i * 3 + 2] = (Math.random() - 0.5) * 18;
+  /* ── EMBERS ── a loose column of warm motes rising from the ground,
+     spread across the full width of the scene so they always read as
+     "coming from the bottom" regardless of viewport aspect, rather
+     than being anchored to specific photo features that drift out of
+     alignment across resolutions. Each mote fades in near the ground
+     and fades out again before it gets very high — PointsMaterial only
+     supports one shared opacity for the whole system, so a small custom
+     shader carries a per-particle alpha instead.
+
+     "The bottom" has to mean the bottom edge of the hero viewport, not
+     a fixed world-space height — in a perspective camera, a flat plane
+     at a fixed Y doesn't project to the same screen position at every
+     depth, camera angle or FOV. So each particle's spawn point is found
+     by unprojecting the screen's bottom edge at that particle's depth,
+     every frame, which keeps it pinned to the true bottom regardless of
+     resolution, aspect-ratio FOV compensation, or the camera's own
+     parallax/orbit drift. */
+  const emberLife  = [];
+  const emberSpeed = [];
+  const emberNdcX  = [];
+  const emberDepth = [];
+  const emberSway  = [];
+  const emberGeo = new THREE.BufferGeometry();
+  const emberPositions = new Float32Array(CONFIG.emberCount * 3);
+  const emberAlphas    = new Float32Array(CONFIG.emberCount);
+  for (let i = 0; i < CONFIG.emberCount; i++) {
+    emberNdcX.push((Math.random() * 2 - 1) * CONFIG.emberNdcSpread);
+    emberDepth.push(CONFIG.emberDepthFar + Math.random() * (CONFIG.emberDepthNear - CONFIG.emberDepthFar));
+    emberLife.push(Math.random());
+    emberSpeed.push(0.00025 + Math.random() * 0.00035);
+    emberAlphas[i] = 0;
+    emberSway.push({ amp: 0.3 + Math.random() * 0.4, phase: Math.random() * Math.PI * 2, speed: 0.2 + Math.random() * 0.3 });
   }
-  partGeo.setAttribute('position', new THREE.BufferAttribute(partPositions, 3));
-  const partMat = new THREE.PointsMaterial({
-    color: 0xc9a84c, size: 0.04, transparent: true, opacity: 0.4, sizeAttenuation: true,
+
+  const _bottomNear = new THREE.Vector3();
+  const _bottomFar  = new THREE.Vector3();
+  function bottomEdgeAtDepth(ndcX, z) {
+    _bottomNear.set(ndcX, -1, -1).unproject(camera);
+    _bottomFar.set(ndcX, -1, 1).unproject(camera);
+    const t = (z - _bottomNear.z) / (_bottomFar.z - _bottomNear.z);
+    return {
+      x: _bottomNear.x + t * (_bottomFar.x - _bottomNear.x),
+      y: _bottomNear.y + t * (_bottomFar.y - _bottomNear.y),
+    };
+  }
+  emberGeo.setAttribute('position', new THREE.BufferAttribute(emberPositions, 3));
+  emberGeo.setAttribute('aAlpha', new THREE.BufferAttribute(emberAlphas, 1));
+  const emberMat = new THREE.ShaderMaterial({
+    uniforms: { color: { value: new THREE.Color(0xd9a24c) } },
+    vertexShader: `
+      attribute float aAlpha;
+      varying float vAlpha;
+      void main() {
+        vAlpha = aAlpha;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_PointSize = 60.0 * (1.0 / -mvPosition.z);
+        gl_Position = projectionMatrix * mvPosition;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 color;
+      varying float vAlpha;
+      void main() {
+        float d = length(gl_PointCoord - vec2(0.5));
+        if (d > 0.5) discard;
+        float edgeFade = smoothstep(0.5, 0.15, d);
+        gl_FragColor = vec4(color, vAlpha * edgeFade);
+      }
+    `,
+    transparent: true, depthWrite: false,
   });
-  const particles = new THREE.Points(partGeo, partMat);
-  scene.add(particles);
+  const embers = new THREE.Points(emberGeo, emberMat);
+  scene.add(embers);
 
   /* ── MOUSE PARALLAX ── */
   let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
@@ -97,133 +195,6 @@ const floorMat = new THREE.MeshStandardMaterial({
     targetX = (e.clientX / window.innerWidth  - 0.5) * 2;
     targetY = (e.clientY / window.innerHeight - 0.5) * 2;
   });
-
-  /* ── VOLUMETRIC GOD RAYS ─────────────────────────────────
-   Shafts of light descending from upper-left (moon position)  */
-
-const rayGroup = new THREE.Group();
-scene.add(rayGroup);
-
-const rayMat = new THREE.MeshBasicMaterial({
-  color: 0x8899cc,        // matches your moon color
-  transparent: true,
-  opacity: 0.045,
-  side: THREE.DoubleSide,
-  depthWrite: false,      // prevents z-fighting with image
-});
-
-// Each ray is a long thin cone-like box, angled from upper-left
-const rayConfigs = [
-  { x: -3,  width: 1.4,  length: 28, rotZ:  0.18 },
-  { x: -1,  width: 0.9,  length: 32, rotZ:  0.12 },
-  { x:  1,  width: 1.8,  length: 26, rotZ:  0.08 },
-  { x:  3,  width: 0.7,  length: 30, rotZ:  0.22 },
-  { x:  5,  width: 1.1,  length: 24, rotZ:  0.05 },
-  { x: -5,  width: 0.6,  length: 34, rotZ:  0.28 },
-];
-
-const rays = [];
-rayConfigs.forEach(function(cfg) {
-  // Taper the ray using a custom geometry (wide at top, narrow at bottom)
-  const geo = new THREE.BufferGeometry();
-  const w = cfg.width;
-  const l = cfg.length;
-  // Two triangles forming a tapered quad
-  const verts = new Float32Array([
-    -w / 2, 0,      0,
-     w / 2, 0,      0,
-    -w / 6, -l,     0,
-     w / 2, 0,      0,
-     w / 6, -l,     0,
-    -w / 6, -l,     0,
-  ]);
-  geo.setAttribute('position', new THREE.BufferAttribute(verts, 3));
-
-  const mat = rayMat.clone();
-  const mesh = new THREE.Mesh(geo, mat);
-
-  // Position: start high up, angle from the moon direction
-  mesh.position.set(cfg.x - 4, 18, -2);
-  mesh.rotation.z = -cfg.rotZ;
-  mesh.rotation.y = 0.3;
-
-  rayGroup.add(mesh);
-  rays.push({ mesh, mat, baseOpacity: 0.03 + Math.random() * 0.06, phase: Math.random() * Math.PI * 2 });
-});
-
-/* ── AURORA RIBBONS ──────────────────────────────────────
-   Undulating sheets of color with golden accents          */
-
-const auroraGroup = new THREE.Group();
-scene.add(auroraGroup);
-
-const auroraRibbons = [];
-
-const ribbonConfigs = [
-  { color: 0x2d1b69, z: -12, y: 8,  width: 40, opacity: 0.12, speed: 0.18, phase: 0 },
-  { color: 0x1a3a5c, z: -15, y: 11, width: 50, opacity: 0.09, speed: 0.13, phase: 1.2 },
-  { color: 0xc9a84c, z: -10, y: 6,  width: 30, opacity: 0.06, speed: 0.22, phase: 2.4 },  // gold
-  { color: 0x3d1a5c, z: -18, y: 14, width: 55, opacity: 0.08, speed: 0.10, phase: 0.7 },
-  { color: 0xb8860b, z: -8,  y: 5,  width: 25, opacity: 0.05, speed: 0.28, phase: 3.1 },  // deep gold
-  { color: 0x0d2a4a, z: -20, y: 16, width: 60, opacity: 0.07, speed: 0.08, phase: 1.8 },
-];
-
-const RIBBON_SEGMENTS = 40; // horizontal divisions — more = smoother wave
-
-ribbonConfigs.forEach(function(cfg) {
-  const geo = new THREE.BufferGeometry();
-  const positions = new Float32Array((RIBBON_SEGMENTS + 1) * 2 * 3);
-  const uvs       = new Float32Array((RIBBON_SEGMENTS + 1) * 2 * 2);
-  const indices   = [];
-
-  // Build a flat ribbon — positions will be deformed each frame in animate()
-  for (let i = 0; i <= RIBBON_SEGMENTS; i++) {
-    const t = i / RIBBON_SEGMENTS;
-    const x = (t - 0.5) * cfg.width;
-    // top vertex
-    positions[(i * 2)     * 3 + 0] = x;
-    positions[(i * 2)     * 3 + 1] = cfg.y + 1.5;
-    positions[(i * 2)     * 3 + 2] = cfg.z;
-    // bottom vertex
-    positions[(i * 2 + 1) * 3 + 0] = x;
-    positions[(i * 2 + 1) * 3 + 1] = cfg.y - 1.5;
-    positions[(i * 2 + 1) * 3 + 2] = cfg.z;
-
-    uvs[(i * 2)     * 2 + 0] = t; uvs[(i * 2)     * 2 + 1] = 1;
-    uvs[(i * 2 + 1) * 2 + 0] = t; uvs[(i * 2 + 1) * 2 + 1] = 0;
-
-    if (i < RIBBON_SEGMENTS) {
-      const a = i * 2, b = i * 2 + 1, c = i * 2 + 2, d = i * 2 + 3;
-      indices.push(a, b, c, b, d, c);
-    }
-  }
-
-  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geo.setAttribute('uv',       new THREE.BufferAttribute(uvs, 2));
-  geo.setIndex(indices);
-
-  const mat = new THREE.MeshBasicMaterial({
-    color: cfg.color,
-    transparent: true,
-    opacity: cfg.opacity,
-    side: THREE.DoubleSide,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending, // makes overlapping ribbons glow
-  });
-
-  const mesh = new THREE.Mesh(geo, mat);
-  auroraGroup.add(mesh);
-
-  auroraRibbons.push({
-    mesh,
-    mat,
-    cfg,
-    baseOpacity: cfg.opacity,
-    phase: cfg.phase,
-    speed: cfg.speed,
-    baseY: cfg.y,
-  });
-});
 
   /* ── ANIMATION LOOP ── */
   let t = 0;
@@ -239,48 +210,45 @@ ribbonConfigs.forEach(function(cfg) {
     camera.position.z = CONFIG.cameraZ + Math.cos(orbitAngle) * 2;
     camera.position.y = CONFIG.cameraHeight - currentY * 0.8;
     camera.lookAt(0, 4, 0);
+    camera.updateMatrixWorld();
+
+    /* Each photo layer drifts with the mouse at its own rate and, for the
+       background, its own direction — the room drifts opposite the
+       pillars (rather than just slower in the same direction) to
+       exaggerate the sense of the pillars passing in front of it. */
+    heroLayers.forEach(function({ el, scale, moveX, moveY, dir }) {
+      if (!el) return;
+      el.style.transform = 'scale(' + scale + ') translate(' + (dir * currentX * moveX).toFixed(2) + 'px, ' + (dir * currentY * moveY).toFixed(2) + 'px)';
+    });
 
     candles.forEach(function({ light, baseY, phase }) {
       light.intensity  = 1.5 + Math.sin(t * 8 + phase) * 0.4 + Math.sin(t * 13.7 + phase) * 0.2;
       light.position.y = baseY + Math.sin(t * 6 + phase) * 0.05;
     });
 
-    // God ray pulse — slow breathe in and out
-rays.forEach(function(r) {
-  r.mat.opacity = r.baseOpacity + Math.sin(t * 0.4 + r.phase) * 0.012;
-});
+    const emberPos   = embers.geometry.attributes.position.array;
+    const emberAlpha = embers.geometry.attributes.aAlpha.array;
+    const fadeInFrac = 0.12;
+    for (let i = 0; i < CONFIG.emberCount; i++) {
+      let life = emberLife[i] + emberSpeed[i];
+      emberLife[i] = life > 1 ? 0 : life;
 
-// Aurora ribbon undulation
-auroraRibbons.forEach(function(r) {
-  const pos = r.mesh.geometry.attributes.position.array;
+      const base = bottomEdgeAtDepth(emberNdcX[i], emberDepth[i]);
+      const sway = emberSway[i];
+      emberPos[i * 3]     = base.x + Math.sin(t * sway.speed + sway.phase) * sway.amp;
+      emberPos[i * 3 + 1] = base.y + life * CONFIG.emberRiseHeight;
+      emberPos[i * 3 + 2] = emberDepth[i];
 
-  for (let i = 0; i <= RIBBON_SEGMENTS; i++) {
-    const frac = i / RIBBON_SEGMENTS;
-    // Wave: each column of vertices shifts up/down independently
-    const wave = Math.sin(frac * 6 + t * r.speed + r.phase) * 1.2
-               + Math.sin(frac * 3 + t * r.speed * 0.6 + r.phase + 1) * 0.6;
-
-    // Ribbon thickness also breathes
-    const breathe = 1.5 + Math.sin(t * r.speed * 0.5 + r.phase) * 0.4;
-
-    // top vertex
-    pos[(i * 2)     * 3 + 1] = r.baseY + wave + breathe;
-    // bottom vertex
-    pos[(i * 2 + 1) * 3 + 1] = r.baseY + wave - breathe;
-  }
-
-  r.mesh.geometry.attributes.position.needsUpdate = true;
-
-  // Opacity drift — ribbons fade in and out slowly
-  r.mat.opacity = r.baseOpacity * (0.6 + Math.sin(t * r.speed * 0.4 + r.phase) * 0.4);
-});
-    const pos = particles.geometry.attributes.position.array;
-    for (let i = 0; i < CONFIG.particleCount; i++) {
-      pos[i * 3 + 1] += 0.004 + Math.sin(t + i) * 0.002;
-      pos[i * 3]     += Math.sin(t * 0.3 + i) * 0.001;
-      if (pos[i * 3 + 1] > 14) pos[i * 3 + 1] = 0;
+      let alpha;
+      if (life < fadeInFrac) {
+        alpha = life / fadeInFrac;
+      } else {
+        alpha = 1 - (life - fadeInFrac) / (1 - fadeInFrac);
+      }
+      emberAlpha[i] = Math.max(0, Math.min(1, alpha)) * 0.6;
     }
-    particles.geometry.attributes.position.needsUpdate = true;
+    embers.geometry.attributes.position.needsUpdate = true;
+    embers.geometry.attributes.aAlpha.needsUpdate    = true;
 
     renderer.render(scene, camera);
   }

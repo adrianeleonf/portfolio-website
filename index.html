@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
@@ -18,11 +18,6 @@
 <!-- ── NAVIGATION ──────────────────────────────────────── -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <svg class="brand-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none">
-      <circle cx="30" cy="30" r="27" stroke="currentColor" stroke-width="0.4" opacity="0.5"/>
-      <rect x="12" y="12" width="36" height="36" transform="rotate(45 30 30)" stroke="currentColor" stroke-width="0.75"/>
-      <text x="30" y="38" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="21" fill="currentColor">AL</text>
-    </svg>
     <span>Adrian Leon</span>
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
@@ -43,7 +38,14 @@
 <section id="hero">
   <canvas id="three-canvas"></canvas>
 
-<img id="hero-image-bg" src="imgs/StarbornOrion/0001.png" alt="">
+  <img id="hero-layer-bg"      class="hero-layer" src="imgs/DesignElements/hero/backgruond.png" alt="">
+  <img id="hero-layer-statue"  class="hero-layer" src="imgs/DesignElements/hero/statue.png" alt="">
+
+  <div id="hero-layer-beams" class="hero-beams" aria-hidden="true">
+    <span class="hero-beam"></span>
+  </div>
+
+  <img id="hero-layer-pillars" class="hero-layer" src="imgs/DesignElements/hero/pillars.png" alt="">
 
 
   <svg class="hero-ornament" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +72,7 @@
     <p class="hero-eyebrow">3D Environment Artist</p>
 
     <div class="ornate-divider hero-ornate-divider" aria-hidden="true">
-      <div class="ornate-divider-glyph">࿇</div>
+      <div class="ornate-divider-glyph"></div>
     </div>
 
     <p class="hero-desc">I am a dreamer, I envision worlds and bring them to life.</p>
@@ -100,14 +102,12 @@
       <h2 class="section-title">About me</h2>
 
       <div class="ornate-divider" style="margin: 0 0 32px;">
-        <div class="ornate-divider-glyph">࿇</div>
+        <div class="ornate-divider-glyph"></div>
       </div>
 
-      <p>Adrian Leon is a Chicago-based 3D Environment Artist originally from Guatemala, specializing in creating surreal, immersive worlds for games. His portfolio features projects ranging from expansive, detailed landscapes to atmospheric interior environments, crafted using tools such as Blender, Unreal Engine, and Substance Painter. Adrian blends his technical expertise with a passion for storytelling to create visually captivating, narrative-driven game spaces.</p>
+      <p>I'm a Chicago-based 3D Environment Artist originally from Guatemala, experienced in building high-quality, optimized game environments from concept through final implementation. I work across modern environment art pipelines, including modular workflows, material layering through masking and vertex painting, trim sheets, and optimization-conscious asset creation, using tools such as Blender, Unreal Engine, and Substance Painter. I pair artistic creativity with a systematic, technically driven approach.</p>
 
-<p>In addition to designing 3D environments, Adrian has a deep love for writing about the worlds he creates. He develops lore and narratives that give depth and context to his environments, ensuring each world is not only visually striking but also rich with meaning and emotional resonance. This storytelling is central to his creative process, bringing life and purpose to the spaces he designs.</p>
-
-<p>Adrian is actively seeking opportunities in the gaming industry to further refine his craft, collaborate with other creatives, and push the boundaries of immersive world design. Outside of his work, he finds inspiration in music. Specifically post-rock and progressive metal He enjoys discovering new bands, attending live shows, and playing guitar. Surrounded by art in all its forms, Adrian draws on a wide range of influences to fuel his creative vision.</p>
+<p>That technical foundation is matched by a passion for storytelling. I blend my craft with narrative to create visually captivating, narrative-driven game spaces, and I have a deep love for writing about the worlds I create, developing lore that gives each environment meaning and emotional resonance beyond what's visible on screen. Storytelling is central to my process, bringing life and purpose to the spaces I design.</p>
 
       <a href="imgs/AboutMe/Adrian's%20Resume.pdf" target="_blank" rel="noopener" class="hero-cta" style="opacity:1; animation:none; margin-top: 8px;">
         <span class="cta-corner cta-corner--tl" aria-hidden="true"></span>
@@ -128,7 +128,7 @@
 
   <div class="portfolio-grid">
 
-    <a href="bellum.html" class="portfolio-item reveal">
+    <a href="/bellum/" class="portfolio-item reveal">
       <div class="item-bg">
         <img src="imgs/Bellum/home_03.webp" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
       </div>
@@ -138,7 +138,7 @@
       </div>
     </a>
 
-    <a href="alchemist.html" class="portfolio-item reveal">
+    <a href="/alchemist/" class="portfolio-item reveal">
       <div class="item-bg">
         <img src="imgs/Alchemist Study/HighresScreenshot00003.webp" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
       </div>
@@ -148,7 +148,7 @@
       </div>
     </a>
 
-    <a href="deadrails.html" class="portfolio-item reveal">
+    <a href="/deadrails/" class="portfolio-item reveal">
       <div class="item-bg">
         <img src="imgs/Library Header.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
       </div>
@@ -158,7 +158,7 @@
       </div>
     </a>
 
-    <a href="starborn.html" class="portfolio-item reveal">
+    <a href="/starborn/" class="portfolio-item reveal">
       <div class="item-bg">
         <img src="imgs/StarbornOrion/0000.png" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
       </div>
@@ -168,7 +168,7 @@
       </div>
     </a>
 
-    <a href="odyssey.html" class="portfolio-item reveal">
+    <a href="/odyssey/" class="portfolio-item reveal">
       <div class="item-bg">
         <img src="imgs/Odyssey/HighresScreenshot00000.webp" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
       </div>
@@ -189,7 +189,7 @@
     <h2 class="section-title">Tools of the Craft</h2>
 
     <div class="ornate-divider" style="margin: 0 auto 64px;">
-      <div class="ornate-divider-glyph">࿇</div>
+      <div class="ornate-divider-glyph"></div>
     </div>
 
     <div class="tools-grid">
@@ -274,7 +274,7 @@
     <h2 class="section-title">Begin a Conversation</h2>
 
     <div class="ornate-divider">
-      <div class="ornate-divider-glyph">࿇</div>
+      <div class="ornate-divider-glyph"></div>
     </div>
 
     <p class="contact-intro">Reach out if you'd like to create something together.</p>
@@ -316,12 +316,16 @@
 
 <!-- ── CUSTOM CURSOR ──────────────────────────────────── -->
 <script src="js/cursor.js"></script>
+<script src="js/nav-scroll.js"></script>
 
 <!-- ── SCROLL REVEAL ──────────────────────────────────── -->
 <script src="js/portfolio-reveal.js"></script>
 
 <!-- Mobile nav toggle -->
 <script src="js/nav-toggle.js"></script>
+
+<!-- In-page section links, without writing #hash into the URL -->
+<script src="js/anchor-scroll.js"></script>
 
 
 </body>

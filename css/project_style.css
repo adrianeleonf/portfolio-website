@@ -1,0 +1,961 @@
+/* ── CUSTOM CURSOR ─────────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.15s;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  position: fixed;
+  width: 28px; height: 28px;
+  border: 1px solid var(--accent-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+/* ── NAVIGATION ────────────────────────────────────── */
+nav:not(.project-nav) {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  padding: 28px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(5,4,7,0.98) 0%, transparent 100%);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+.nav-logo span {
+  background: linear-gradient(
+    90deg,
+    var(--accent-gold) 0%,
+    var(--text-primary) 40%,
+    var(--accent-gold) 60%,
+    var(--accent-silver) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
+}
+
+.nav-back {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+.nav-back::before {
+  content: '←';
+  font-size: 14px;
+}
+.nav-back:hover { color: var(--accent-gold); }
+
+/* ── HERO / CINEMATIC BANNER ───────────────────────── */
+.project-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient veil over image */
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5,4,7,1) 0%,
+    rgba(5,4,7,0.55) 40%,
+    rgba(5,4,7,0.15) 80%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+/* Left side vertical accent line */
+.hero-accent-line {
+  position: absolute;
+  left: 60px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
+  opacity: 0.25;
+  z-index: 3;
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 5;
+  padding: 0 60px 64px;
+  width: 100%;
+}
+
+.project-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
+.project-category {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  display: block;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+/* ── DIVIDER ───────────────────────────────────────── */
+.ornate-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 400px;
+}
+
+/* ── MAIN LAYOUT ───────────────────────────────────── */
+.project-body {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 100px 60px 200px;
+}
+
+/* Top two-column intro */
+.project-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 100px;
+}
+
+.section-label {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+}
+
+.project-description p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.project-description p:last-child { margin-bottom: 0; }
+
+/* Sidebar details card */
+.project-details-card {
+  border: 1px solid var(--border-ornate);
+  padding: 36px;
+  position: sticky;
+  top: 100px;
+  background: rgba(13,11,16,0.6);
+  backdrop-filter: blur(8px);
+}
+.project-details-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 40px; height: 1px;
+  background: var(--accent-gold);
+}
+.project-details-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1px; height: 40px;
+  background: var(--accent-gold);
+}
+
+.detail-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-ornate);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+.detail-item:first-child { padding-top: 0; }
+.detail-label {
+  font-family: var(--font-heading);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+.detail-value {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+/* ── VIDEO / SINGLE-ASSET FRAME (trailers, embeds, single graphs) ── */
+.video-section {
+  margin-bottom: 100px;
+}
+
+.video-section > .section-label { margin-bottom: 8px; }
+.video-section > h2 { margin-bottom: 48px; }
+
+.video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0d0b10;
+  border: 1px solid var(--border-ornate);
+  overflow: hidden;
+}
+
+.video-wrap video,
+.video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border: 0;
+}
+
+.video-wrap img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  padding: 24px;
+}
+
+/* ── CAROUSEL ──────────────────────────────────────── */
+.carousel-section {
+  margin-bottom: 100px;
+}
+
+.carousel-section > .section-label { margin-bottom: 8px; }
+.carousel-section > h2 { margin-bottom: 48px; }
+
+.carousel-outer {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track-wrap {
+  overflow: hidden;
+  border: 1px solid var(--border-ornate);
+  position: relative;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  width: 100%;
+  min-width: 100%;
+  flex: 0 0 100%;
+  aspect-ratio: 16/9;
+  position: relative;
+  background: var(--bg-mid);
+  overflow: hidden;
+}
+
+/* EDIT: each slide image */
+.carousel-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.carousel-slide:hover img { transform: scale(1.03); }
+
+/* Slides where full image should be visible (graphs, GIFs, UI shots) */
+.carousel-slide--contain {
+  background: #0d0b10;
+}
+.carousel-slide--contain img {
+  object-fit: contain;
+  padding: 24px;
+}
+.carousel-slide--contain:hover img { transform: none; }
+
+/* Slide index label */
+.slide-index {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: rgba(201,168,76,0.7);
+  z-index: 4;
+}
+
+/* Slide caption */
+.slide-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 48px 32px 28px;
+  background: linear-gradient(to top, rgba(5,4,7,0.85) 0%, transparent 100%);
+  z-index: 4;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.carousel-slide:hover .slide-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Carousel controls */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+
+.carousel-arrows {
+  display: flex;
+  gap: 12px;
+}
+
+.carousel-btn {
+  width: 48px; height: 48px;
+  border: 1px solid var(--border-ornate);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  font-family: var(--font-heading);
+}
+.carousel-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: rgba(201,168,76,0.05);
+}
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dot {
+  width: 20px; height: 1px;
+  background: var(--border-ornate);
+  cursor: pointer;
+  transition: background 0.3s, width 0.3s;
+}
+.dot.active {
+  background: var(--accent-gold);
+  width: 40px;
+}
+
+/* Counter */
+.carousel-counter {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+}
+.carousel-counter .current { color: var(--accent-gold); }
+
+/* Drag hint */
+.drag-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: rgba(201,168,76,0.4);
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.carousel-outer.dragged .drag-hint { opacity: 0; }
+
+/* ── PROJECT CAPSULE — compact persistent project switcher ── */
+.project-capsule {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 450;
+}
+
+.capsule-shell {
+  position: relative;
+  width: 70px;
+  padding: 10px;
+  border-radius: 4px;
+  background: rgba(5,4,7,0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-ornate);
+  max-height: 70px;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(.22,.9,.3,1);
+}
+
+.project-capsule:hover .capsule-shell {
+  max-height: 320px;
+}
+
+.capsule-items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  transform: translateY(var(--capsule-offset, 0px));
+  transition: transform 0.45s cubic-bezier(.22,.9,.3,1);
+}
+
+.project-capsule:hover .capsule-items {
+  transform: translateY(0);
+}
+
+.capsule-label-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.capsule-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: var(--accent-gold);
+  -webkit-mask-image: url("/imgs/DesignElements/Corner.svg");
+  mask-image: url("/imgs/DesignElements/Corner.svg");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.capsule-corner--tr { top: -1px; right: -1px; }
+.capsule-corner--tl { top: -1px; left: -1px; transform: scaleX(-1); }
+.capsule-corner--br { bottom: -1px; right: -1px; transform: scaleY(-1); }
+.capsule-corner--bl { bottom: -1px; left: -1px; transform: scale(-1, -1); }
+
+.capsule-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.capsule-thumb {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-ornate);
+  opacity: 0.55;
+  filter: grayscale(0.4);
+  transition: opacity 0.3s, filter 0.3s, border-color 0.3s;
+}
+
+.capsule-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.capsule-item:hover .capsule-thumb {
+  opacity: 0.9;
+  filter: grayscale(0);
+}
+
+.capsule-item.active .capsule-thumb {
+  opacity: 1;
+  filter: grayscale(0);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(179,160,143,0.15);
+}
+
+.capsule-label {
+  position: absolute;
+  left: 82px;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.9), 0 0 16px rgba(5,4,7,0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.capsule-label:nth-of-type(1) { top: 28px; }
+.capsule-label:nth-of-type(2) { top: 86px; }
+.capsule-label:nth-of-type(3) { top: 144px; }
+.capsule-label:nth-of-type(4) { top: 202px; }
+.capsule-label:nth-of-type(5) { top: 260px; }
+
+.capsule-shell:has(a.capsule-item:nth-of-type(1):hover) ~ .capsule-label-list .capsule-label:nth-of-type(1),
+.capsule-shell:has(a.capsule-item:nth-of-type(2):hover) ~ .capsule-label-list .capsule-label:nth-of-type(2),
+.capsule-shell:has(a.capsule-item:nth-of-type(3):hover) ~ .capsule-label-list .capsule-label:nth-of-type(3),
+.capsule-shell:has(a.capsule-item:nth-of-type(4):hover) ~ .capsule-label-list .capsule-label:nth-of-type(4),
+.capsule-shell:has(a.capsule-item:nth-of-type(5):hover) ~ .capsule-label-list .capsule-label:nth-of-type(5) {
+  opacity: 1;
+}
+
+.capsule-item:hover .capsule-label,
+.capsule-item.active .capsule-label {
+  opacity: 1;
+}
+
+.capsule-item.active .capsule-label {
+  color: var(--accent-gold);
+}
+
+/* ── PROJECT NAV (prev / next) — retired in favor of the capsule
+   switcher, which now works on both desktop and mobile. Markup is
+   still in the page for now; kept hidden here rather than removed. */
+.project-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 400;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  border-top: 1px solid var(--border-ornate);
+  background: var(--border-ornate); /* gap colour */
+}
+
+.project-nav-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  text-decoration: none;
+  border: none;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+  background: rgba(13,11,16,0.96);
+  backdrop-filter: blur(12px);
+}
+.project-nav-item:hover {
+  background: rgba(201,168,76,0.06);
+}
+.project-nav-item.next {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+/* Hover shimmer */
+.project-nav-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(201,168,76,0.04) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: none;
+}
+.project-nav-item:hover::before {
+  animation: shimmerSweep 0.7s ease forwards;
+}
+
+.nav-item-label {
+  font-family: var(--font-heading);
+  font-size: 8px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+.nav-item-title {
+  font-family: var(--font-display);
+  font-size: clamp(11px, 1.1vw, 14px);
+  color: var(--text-primary);
+  transition: color 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.project-nav-item:hover .nav-item-title { color: var(--accent-gold); }
+.nav-item-arrow {
+  font-size: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  display: block;
+  transition: transform 0.3s, color 0.3s;
+}
+.project-nav-item:hover .nav-item-arrow { color: var(--accent-gold); }
+.project-nav-item.prev:hover .nav-item-arrow { transform: translateX(-4px); }
+.project-nav-item.next:hover .nav-item-arrow { transform: translateX(4px); }
+
+/* ── BEFORE / AFTER SLIDER ─────────────────────────── */
+.beforeafter-section {
+  margin-bottom: 100px;
+}
+
+.beforeafter-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border: 1px solid var(--border-ornate);
+  cursor: col-resize;
+  user-select: none;
+}
+
+/* After image — full width base layer */
+.ba-after {
+  position: absolute;
+  inset: 0;
+}
+.ba-after img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Before image — same full-size layer as after, revealed via clip-path so it stays perfectly registered */
+.ba-before {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 50% 0 0);
+}
+.ba-before img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Divider line */
+.ba-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--accent-gold);
+  transform: translateX(-50%);
+  z-index: 10;
+  cursor: col-resize;
+}
+
+/* Drag handle */
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.2), 0 4px 20px rgba(0,0,0,0.6);
+  transition: box-shadow 0.2s;
+}
+.ba-divider:hover .ba-handle,
+.ba-divider:active .ba-handle {
+  box-shadow: 0 0 0 8px rgba(201,168,76,0.15), 0 4px 24px rgba(0,0,0,0.8);
+}
+.ba-arrow {
+  color: var(--bg-deep);
+  font-size: 18px;
+  line-height: 1;
+  font-weight: bold;
+}
+
+/* Labels */
+.ba-label {
+  position: absolute;
+  bottom: 20px;
+  font-family: var(--font-heading);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border: 1px solid var(--border-ornate);
+  background: rgba(5,4,7,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 5;
+  pointer-events: none;
+}
+.ba-label-before {
+  left: 20px;
+  color: var(--text-muted);
+}
+.ba-label-after {
+  right: 20px;
+  color: var(--accent-gold);
+}
+
+/* ── LIGHTBOX (fullscreen image viewer) ─────────────── */
+.carousel-slide img { cursor: zoom-in; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5,4,7,0.96);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 80px;
+  overflow: hidden;
+}
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  display: block;
+  border: 1px solid var(--border-ornate);
+  cursor: zoom-in;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+}
+.lightbox-content img.zoomed { cursor: grab; }
+.lightbox-content img.dragging { cursor: grabbing; transition: none; }
+
+.lightbox-zoom-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2001;
+}
+.lightbox-zoom-btn,
+.lightbox-zoom-level {
+  border: 1px solid var(--border-ornate);
+  background: rgba(13,11,16,0.85);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, color 0.3s;
+  font-family: var(--font-heading);
+}
+.lightbox-zoom-btn:hover,
+.lightbox-zoom-level:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+.lightbox-zoom-btn {
+  width: 40px; height: 40px;
+  font-size: 18px;
+}
+.lightbox-zoom-level {
+  min-width: 64px;
+  padding: 0 12px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.lightbox-caption {
+  margin-top: 20px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+.lightbox-counter {
+  margin-top: 8px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--accent-gold);
+}
+
+.lightbox-close,
+.lightbox-arrow {
+  border: 1px solid var(--border-ornate);
+  background: rgba(13,11,16,0.85);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, color 0.3s;
+  z-index: 2001;
+  font-family: var(--font-heading);
+}
+.lightbox-close:hover,
+.lightbox-arrow:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  width: 44px; height: 44px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px; height: 56px;
+  font-size: 22px;
+}
+.lightbox-prev { left: 32px; }
+.lightbox-next { right: 32px; }
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 24px; }
+
+  /* "Adrian Leon" now runs at full length in the nav (no icon to fall
+     back to), and has to share the row with "All Projects" — tighten
+     both so neither wraps onto a second line. */
+  .nav-logo span { font-size: 12px; letter-spacing: 0.12em; }
+  .nav-back { font-size: 9px; letter-spacing: 0.12em; gap: 6px; }
+
+  .project-hero-content { padding: 0 24px 48px; }
+  .hero-accent-line { left: 24px; }
+
+  .project-body { padding: 60px 24px 100px; }
+
+  .project-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .project-details-card { position: static; }
+
+  /* Capsule switcher on touch: hover can't expand it, so tap toggles an
+     .expanded class instead (see js/capsule-touch.js). Once expanded,
+     every label is shown at once — there's no reliable per-item hover
+     on touch to reveal them individually like on desktop. */
+  .project-capsule.expanded .capsule-shell { max-height: 320px; }
+  .project-capsule.expanded .capsule-items { transform: translateY(0); }
+  .project-capsule.expanded .capsule-label { opacity: 1; }
+
+  .lightbox { padding: 24px; }
+  .lightbox-arrow { width: 44px; height: 44px; font-size: 18px; }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+  .lightbox-close { top: 12px; right: 12px; }
+  .lightbox-zoom-controls { bottom: 12px; }
+  .lightbox-zoom-btn { width: 36px; height: 36px; font-size: 16px; }
+}
