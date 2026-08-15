@@ -134,12 +134,78 @@
     overflow: hidden;
   }
 
+  #hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(7,6,5,0.55) 75%, rgba(7,6,5,0.88) 100%);
+  }
+
+  /* Three stacked cutouts of the same render (far room, statue, near
+     pillars) instead of one flat photo, so the hero parallax can move
+     each at its own rate for real depth. Ordered back-to-front to match
+     the scene: room behind the statue, statue behind the framing
+     pillars. Each gets a bit of overscan (via scale, added in JS
+     alongside its translate) so the parallax offset never exposes a
+     transparent edge. */
+  .hero-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    will-change: transform;
+  }
+  #hero-layer-bg      { z-index: 1; }
+  #hero-layer-statue  { z-index: 2; }
+  #hero-layer-pillars { z-index: 4; }
+
+  /* A soft overhead glow instead of a defined beam — the reference photo
+     has no visible shaft with edges, just diffuse light falling from
+     above (the statue reads brighter at the head/shoulders, fading out
+     toward the feet). A wide, blurred radial wash with no hard geometry
+     reproduces that instead of looking like a synthetic spotlight cone.
+     Sits behind the front pillars so they occlude it like real geometry
+     would, and drifts with the background layer since it's anchored to
+     the same wall. Cool blue-grey to match the moonlight already
+     lighting the statue, not the warm torch color. */
+  .hero-beams {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    overflow: hidden;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    will-change: transform;
+  }
+
+  .hero-beam {
+    position: absolute;
+    top: -15%;
+    left: 50%;
+    width: 900px;
+    height: 90%;
+    margin-left: -450px;
+    background: radial-gradient(ellipse 50% 55% at 50% 0%, rgba(150,165,205,0.16) 0%, rgba(150,165,205,0.07) 40%, transparent 72%);
+    filter: blur(30px);
+    animation: heroBeamFlicker 12s ease-in-out infinite;
+  }
+
+  @keyframes heroBeamFlicker {
+    0%, 100% { opacity: 0.7; }
+    45%      { opacity: 0.9; }
+    70%      { opacity: 0.65; }
+  }
+
 #three-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* above image */
+  z-index: 6; /* above the photo layers and vignette, so embers read near the edges */
 }
 
   .hero-content {
@@ -263,7 +329,7 @@
     top: 80px; right: 0;
     width: 380px;
     pointer-events: none;
-    z-index: 5;
+    z-index: 7;
     animation: fadeIn 2s ease 1.5s forwards;
     opacity: 0;
   }
@@ -552,16 +618,6 @@
     text-align: center;
   }
 
-  #hero-image-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    z-index: 1;
-  }
-
   /* ── CONTACT ───────────────────────────────────────── */
   #contact {
     background: var(--bg-deep);
@@ -662,6 +718,11 @@
        pointer position on touch, so it's just visual clutter here. */
     .cursor-dot, .cursor-ring { display: none; }
 
+    /* The beams are sized for a wide hero frame; on a narrow portrait
+       viewport their fixed width dominates the crop and cuts across the
+       title text instead of reading as background atmosphere. */
+    .hero-beams { display: none; }
+
     .nav-toggle { display: flex; }
     .nav-overlay { display: block; pointer-events: none; }
     .nav-overlay.visible { pointer-events: auto; }
@@ -706,10 +767,23 @@
    ENHANCED ANIMATIONS
    ══════════════════════════════════════════════════ */
 
-/* ── 1. NAV LOGO — flat accent-gold, matching the rest of the site ── */
+/* ── 1. NAV LOGO — gold shimmer sweep, using the site's own palette
+   (accent-gold / text-primary / accent-silver) instead of unrelated
+   cream/goldenrod tones ── */
 
 .nav-logo span {
-  color: var(--accent-gold);
+  background: linear-gradient(
+    90deg,
+    var(--accent-gold) 0%,
+    var(--text-primary) 40%,
+    var(--accent-gold) 60%,
+    var(--accent-silver) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
 }
 
 /* ── 2. HERO TITLE — subtle gold text glow pulse ─── */

@@ -46,7 +46,18 @@ nav:not(.project-nav) {
 }
 
 .nav-logo span {
-  color: var(--accent-gold);
+  background: linear-gradient(
+    90deg,
+    var(--accent-gold) 0%,
+    var(--text-primary) 40%,
+    var(--accent-gold) 60%,
+    var(--accent-silver) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
 }
 
 .nav-back {
@@ -922,7 +933,12 @@ nav:not(.project-nav) {
 /* ── RESPONSIVE ────────────────────────────────────── */
 @media (max-width: 900px) {
   nav { padding: 24px; }
-  .nav-logo span { display: none; }
+
+  /* "Adrian Leon" now runs at full length in the nav (no icon to fall
+     back to), and has to share the row with "All Projects" — tighten
+     both so neither wraps onto a second line. */
+  .nav-logo span { font-size: 12px; letter-spacing: 0.12em; }
+  .nav-back { font-size: 9px; letter-spacing: 0.12em; gap: 6px; }
 
   /* Custom cursor is a desktop-mouse effect; there's no persistent
      pointer position on touch, so it's just visual clutter here. */
