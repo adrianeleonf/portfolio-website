@@ -160,26 +160,6 @@ nav:not(.project-nav) {
   max-width: 400px;
 }
 
-.ornate-divider-glyph {
-  background-color: var(--accent-gold);
-  -webkit-mask-image: url("/imgs/DesignElements/Cross.png");
-  mask-image: url("/imgs/DesignElements/Cross.png");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  font-size: 11px;
-  opacity: 0.8;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.4em;
-  height: 1.4em;
-  animation: glyphSpin 12s linear infinite;
-}
-
 /* ── MAIN LAYOUT ───────────────────────────────────── */
 .project-body {
   max-width: 1320px;
@@ -952,10 +932,6 @@ nav:not(.project-nav) {
   .nav-logo span { font-size: 12px; letter-spacing: 0.12em; }
   .nav-back { font-size: 9px; letter-spacing: 0.12em; gap: 6px; }
 
-  /* Custom cursor is a desktop-mouse effect; there's no persistent
-     pointer position on touch, so it's just visual clutter here. */
-  .cursor-dot, .cursor-ring { display: none; }
-
   .project-hero-content { padding: 0 24px 48px; }
   .hero-accent-line { left: 24px; }
 
@@ -966,8 +942,6 @@ nav:not(.project-nav) {
     gap: 48px;
   }
   .project-details-card { position: static; }
-
-  footer { flex-direction: column; gap: 12px; text-align: center; }
 
   /* Capsule switcher on touch: hover can't expand it, so tap toggles an
      .expanded class instead (see js/capsule-touch.js). Once expanded,

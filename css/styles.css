@@ -372,22 +372,6 @@
     max-width: 400px;
   }
 
-  
-
-  .ornate-divider-glyph {
-    background-color: var(--accent-gold);
-    -webkit-mask-image: url("/imgs/DesignElements/Cross.png");
-    mask-image: url("/imgs/DesignElements/Cross.png");
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    font-size: 11px;
-    opacity: 0.8;
-  }
-
   /* ── SECTION BASE ──────────────────────────────────── */
   section {
     padding: 120px 60px;
@@ -722,10 +706,6 @@
   @media (max-width: 900px) {
     nav { padding: 24px 24px; }
 
-    /* Custom cursor is a desktop-mouse effect; there's no persistent
-       pointer position on touch, so it's just visual clutter here. */
-    .cursor-dot, .cursor-ring { display: none; }
-
     /* The beams are sized for a wide hero frame; on a narrow portrait
        viewport their fixed width dominates the crop and cuts across the
        title text instead of reading as background atmosphere. */
@@ -767,32 +747,11 @@
     .portfolio-item { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 4/3 !important; }
 
     .tools-grid .tool-card { width: calc(50% - 12px); }
-
-    footer { flex-direction: column; gap: 12px; text-align: center; }
   }
 
   /* ══════════════════════════════════════════════════
    ENHANCED ANIMATIONS
    ══════════════════════════════════════════════════ */
-
-/* ── 1. NAV LOGO — gold shimmer sweep, using the site's own palette
-   (accent-gold / text-primary / accent-silver) instead of unrelated
-   cream/goldenrod tones ── */
-
-.nav-logo span {
-  background: linear-gradient(
-    90deg,
-    var(--accent-gold) 0%,
-    var(--text-primary) 40%,
-    var(--accent-gold) 60%,
-    var(--accent-silver) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: goldShimmer 4s linear infinite;
-}
 
 /* ── 2. HERO TITLE — subtle gold text glow pulse ─── */
 @keyframes titleGlow {
@@ -802,17 +761,6 @@
 
 .hero-title {
   animation: fadeUp 1s ease 0.5s forwards, titleGlow 4s ease 1.5s infinite;
-}
-
-/* ── 4. ORNATE DIVIDER GLYPH — slow rotation ─────── */
-
-.ornate-divider-glyph {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.4em;
-  height: 1.4em;
-  animation: glyphSpin 12s linear infinite;
 }
 
 /* ── 5. TOOL CARDS — shimmer line on hover ──────── */
