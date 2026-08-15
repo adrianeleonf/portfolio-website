@@ -375,8 +375,16 @@
   
 
   .ornate-divider-glyph {
-    color: var(--accent-gold);
-    font-size: 18px;
+    background-color: var(--accent-gold);
+    -webkit-mask-image: url("/imgs/DesignElements/Cross.png");
+    mask-image: url("/imgs/DesignElements/Cross.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    font-size: 11px;
     opacity: 0.8;
   }
 
@@ -799,7 +807,11 @@
 /* ── 4. ORNATE DIVIDER GLYPH — slow rotation ─────── */
 
 .ornate-divider-glyph {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
   animation: glyphSpin 12s linear infinite;
 }
 
