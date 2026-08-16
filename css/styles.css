@@ -829,25 +829,21 @@ a.portfolio-item {
   animation: titleExpand 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ── 9. CONTACT EMAIL — shimmer on hover ─────────── */
-@keyframes emailShimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
+/* ── 9. CONTACT EMAIL — shimmer on hover, same gradient
+   and sweep as the nav logo (goldShimmer, in base.css) ── */
 .contact-email:hover {
   background: linear-gradient(
     90deg,
     var(--accent-gold) 0%,
-    #fff8e7 45%,
-    var(--accent-gold) 55%,
-    #b8860b 100%
+    var(--text-primary) 40%,
+    var(--accent-gold) 60%,
+    var(--accent-silver) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: emailShimmer 1.2s linear infinite;
+  animation: goldShimmer 1.2s linear infinite;
   border-color: var(--accent-gold);
 }
 
