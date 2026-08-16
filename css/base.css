@@ -77,7 +77,7 @@ footer {
 
 .footer-email {
   font-family: var(--font-heading);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--text-muted);
   text-transform: uppercase;
