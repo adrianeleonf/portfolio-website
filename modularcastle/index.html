@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dead Rails — ADRIAN LEON</title>
+<title>Modular Castle — ADRIAN LEON</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/base.css">
@@ -43,7 +43,7 @@
 
 <!-- ── PROJECT RAIL ───────────────────────────────────── -->
 <aside class="project-capsule" aria-label="Switch project">
-  <div class="capsule-shell" style="--capsule-offset: -174px;">
+  <div class="capsule-shell" style="--capsule-offset: -58px;">
     <span class="capsule-corner capsule-corner--tl"></span>
     <span class="capsule-corner capsule-corner--tr"></span>
     <span class="capsule-corner capsule-corner--bl"></span>
@@ -52,13 +52,13 @@
       <a href="/bellum/" class="capsule-item">
         <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/bellum.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="/modularcastle/" class="capsule-item">
+      <a href="/modularcastle/" class="capsule-item active">
         <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/modularcastle.webp" alt="" loading="lazy"></span>
       </a>
       <a href="/alchemist/" class="capsule-item">
         <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/alchemist.webp" alt="" loading="lazy"></span>
       </a>
-      <a href="/deadrails/" class="capsule-item active">
+      <a href="/deadrails/" class="capsule-item">
         <span class="capsule-thumb"><img src="/imgs/DesignElements/capsule-thumbs/deadrails.webp" alt="" loading="lazy"></span>
       </a>
       <a href="/starborn/" class="capsule-item">
@@ -82,14 +82,14 @@
 <!-- ── PROJECT HERO ────────────────────────────────────── -->
 <section class="project-hero">
   <div class="hero-bg">
-    <img src="/imgs/Dead Rails/Library Header.png">
+    <img src="/imgs/ModularCastle/BeautyShot.webp">
   </div>
   <div class="hero-veil"></div>
   <div class="hero-accent-line"></div>
 
   <div class="project-hero-content">
-    <h1 class="project-hero-title">Dead Rails</h1>
-    <span class="project-category">Twin-Stick Shooter - Unreal Engine</span>
+    <h1 class="project-hero-title">Modular Castle</h1>
+    <span class="project-category">Environment Study - Unreal Engine</span>
   </div>
 </section>
 
@@ -105,9 +105,9 @@
         <div class="ornate-divider-glyph"></div>
       </div>
 
-      <p>Dead Rails is a co-op zombie survival game built around a single lifeline: the train. Working with a small team, I helped design and build the environments survivors move through, and was responsible for implementing props, modular assets, and environment pieces into the game world while keeping performance optimized for runtime.</p>
+      <p>Modular Castle is a set I built over the course of one week to further develop my understanding of material layering through masks and vertex painting. The pieces use two sets of UVs, one for tilable textures that render at 5.12px/cm texel density at 1k resolution, and a mask UV for Nanite virtual texture painting.</p>
 
-      <p>My role extended beyond asset creation into shaping the project's mood and visual identity, designing a stylized, cel-shaded look with its own light-interaction rules, and building the modular assets and master material workflow needed to keep that style consistent while supporting procedural level generation and replayability.</p>
+      <p>Alternatively, they can use exported masks from Substance Painter or traditional vertex painting when not using Nanite. I also built custom decals in Substance Designer to add detail. The surrounding nature scene was built using Quixel Megascans assets.</p>
     </div>
 
     <!-- Sidebar -->
@@ -116,11 +116,11 @@
 
       <div class="detail-item">
         <span class="detail-label">Studio / Context</span>
-        <span class="detail-value">RedZip Studio</span>
+        <span class="detail-value">Personal Project</span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Genre</span>
-        <span class="detail-value">Twin-Stick Shooter</span>
+        <span class="detail-value">Environment Study</span>
       </div>
       <div class="detail-item">
         <span class="detail-label">Focus</span>
@@ -129,125 +129,9 @@
     </aside>
   </div>
 
-  <!-- ── SECTION 1 — TRAILER ── -->
-  <div class="video-section">
-    <h2 class="section-title">Trailer</h2>
-
-    <div class="video-wrap">
-      <iframe src="https://www.youtube.com/embed/_zhJKn2zGuw" title="Dead Rails Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <!-- ── SLIDESHOW 2 — COLOR GRADING ── -->
-  <div class="beforeafter-section">
-    <h2 class="section-title">Color Grading</h2>
-
-    <div class="beforeafter-wrap" id="beforeAfterWrap">
-      <div class="ba-after">
-        <img src="/imgs/Dead Rails/ScreenShot00000.webp" alt="After colour correction" loading="lazy">
-      </div>
-      <div class="ba-before" id="baBefore">
-        <img src="/imgs/Dead Rails/ScreenShot00001.webp" alt="Before colour correction" loading="lazy">
-      </div>
-
-      <!-- Divider line + handle -->
-      <div class="ba-divider" id="baDivider">
-        <div class="ba-handle">
-          <span class="ba-arrow ba-arrow-left">‹</span>
-          <span class="ba-arrow ba-arrow-right">›</span>
-        </div>
-      </div>
-
-      <!-- Labels -->
-      <span class="ba-label ba-label-before">Before</span>
-      <span class="ba-label ba-label-after">After</span>
-    </div>
-
-    <div class="carousel-outer" style="margin-top: 28px;">
-      <div class="drag-hint">Drag to explore</div>
-
-      <div class="carousel-track-wrap">
-        <div class="carousel-track">
-
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="/imgs/Dead Rails/ColorCorrectionCurve.webp" alt="Color correction curve" loading="lazy">
-            <div class="slide-caption">Color Correction Curve</div>
-            <span class="slide-index">01</span>
-          </div>
-
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="/imgs/Dead Rails/LightingCurve.webp" alt="Lighting curve" loading="lazy">
-            <div class="slide-caption">Lighting Curve</div>
-            <span class="slide-index">02</span>
-          </div>
-
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="/imgs/Dead Rails/CurveCelShader_MAT_MaterialGraph_0_00000.webp" alt="Post process material graph" loading="lazy">
-            <div class="slide-caption">Post Process Material</div>
-            <span class="slide-index">03</span>
-          </div>
-
-        </div><!-- /track -->
-      </div><!-- /track-wrap -->
-
-      <div class="carousel-controls">
-        <div class="carousel-arrows">
-          <button class="carousel-btn prev" aria-label="Previous">←</button>
-          <button class="carousel-btn next" aria-label="Next">→</button>
-        </div>
-        <div class="carousel-dots"></div>
-        <div class="carousel-counter">
-          <span class="current counter-current">01</span>
-          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
-          <span class="counter-total">03</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── SLIDESHOW 3 — ANIMATIONS ── -->
+  <!-- ── SLIDESHOW 1 — SELECTED RENDERS ── -->
   <div class="carousel-section">
-    <h2 class="section-title">Animations</h2>
-
-    <div class="carousel-outer">
-      <div class="drag-hint">Drag to explore</div>
-
-      <div class="carousel-track-wrap">
-        <div class="carousel-track">
-
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="/imgs/Dead Rails/SupplyCrateOpenAnim-ezgif.com-optimize.gif" alt="Supply crate opening animation" loading="lazy">
-            <div class="slide-caption">Supply Crate Opening Animation</div>
-            <span class="slide-index">01</span>
-          </div>
-
-          <div class="carousel-slide carousel-slide--contain">
-            <img src="/imgs/Dead Rails/CrateOpenAnim-ezgif.com-optimize.gif" alt="Crate opening animation" loading="lazy">
-            <div class="slide-caption">Crate Opening Animation</div>
-            <span class="slide-index">02</span>
-          </div>
-
-        </div><!-- /track -->
-      </div><!-- /track-wrap -->
-
-      <div class="carousel-controls">
-        <div class="carousel-arrows">
-          <button class="carousel-btn prev" aria-label="Previous">←</button>
-          <button class="carousel-btn next" aria-label="Next">→</button>
-        </div>
-        <div class="carousel-dots"></div>
-        <div class="carousel-counter">
-          <span class="current counter-current">01</span>
-          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
-          <span class="counter-total">02</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── SLIDESHOW 4 — MODULAR BUILDINGS ── -->
-  <div class="carousel-section">
-    <h2 class="section-title">Modular Buildings</h2>
+    <h2 class="section-title">Selected Renders</h2>
 
     <div class="carousel-outer">
       <div class="drag-hint">Drag to explore</div>
@@ -256,26 +140,26 @@
         <div class="carousel-track">
 
           <div class="carousel-slide">
-            <img src="/imgs/Dead Rails/modularbuildings1.webp" alt="Modular barn — assembled" loading="lazy">
-            <div class="slide-caption">Modular Barn — Assembled</div>
+            <img src="/imgs/ModularCastle/BeautyShot.webp" alt="Modular castle beauty shot" loading="lazy">
+            <div class="slide-caption">Beauty Shot</div>
             <span class="slide-index">01</span>
           </div>
 
           <div class="carousel-slide">
-            <img src="/imgs/Dead Rails/modularbuildings2.webp" alt="Modular barn — kit pieces" loading="lazy">
-            <div class="slide-caption">Modular Barn — Kit Pieces</div>
+            <video src="/imgs/ModularCastle/PanningShot.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="slide-caption">Panning Shot</div>
             <span class="slide-index">02</span>
           </div>
 
           <div class="carousel-slide">
-            <img src="/imgs/Dead Rails/modularbuildings3.webp" alt="Modular warehouse — assembled" loading="lazy">
-            <div class="slide-caption">Modular Warehouse — Assembled</div>
+            <video src="/imgs/ModularCastle/Timelapse.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="slide-caption">Build Timelapse</div>
             <span class="slide-index">03</span>
           </div>
 
           <div class="carousel-slide">
-            <img src="/imgs/Dead Rails/modularbuildings4.webp" alt="Modular warehouse — kit pieces" loading="lazy">
-            <div class="slide-caption">Modular Warehouse — Kit Pieces</div>
+            <img src="/imgs/ModularCastle/ModularShowcase.webp" alt="Modular kit pieces breakdown" loading="lazy">
+            <div class="slide-caption">Modular Kit Breakdown</div>
             <span class="slide-index">04</span>
           </div>
 
@@ -297,28 +181,124 @@
     </div>
   </div>
 
-  <!-- ── SECTION 5 — MASTER MATERIAL ── -->
-  <div class="video-section">
-    <h2 class="section-title">Master Material</h2>
+  <!-- ── SLIDESHOW 2 — HEIGHT-BASED MATERIAL LAYER MASTER ── -->
+  <div class="carousel-section">
+    <h2 class="section-title">Height-Based Material Layer Master</h2>
 
-    <div class="video-wrap">
-      <img src="/imgs/Dead Rails/Base_MM_MaterialGraph_0_00000.webp" alt="Master material graph" loading="lazy">
+    <div class="carousel-outer">
+      <div class="drag-hint">Drag to explore</div>
+
+      <div class="carousel-track-wrap">
+        <div class="carousel-track">
+
+          <div class="carousel-slide">
+            <video src="/imgs/ModularCastle/HeightBasedBlendShowcase.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="slide-caption">Height-Based Blend Preview</div>
+            <span class="slide-index">01</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="/imgs/ModularCastle/MasterMaterial.webp" alt="Layered base material blueprint" loading="lazy">
+            <div class="slide-caption">Layered Base Material</div>
+            <span class="slide-index">02</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="/imgs/ModularCastle/MaterialLayerBlend.webp" alt="Material layer blend blueprint" loading="lazy">
+            <div class="slide-caption">Material Layer Blend</div>
+            <span class="slide-index">03</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="/imgs/ModularCastle/LayerMaster.webp" alt="Material layer master blueprint" loading="lazy">
+            <div class="slide-caption">Material Layer Master</div>
+            <span class="slide-index">04</span>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /track-wrap -->
+
+      <div class="carousel-controls">
+        <div class="carousel-arrows">
+          <button class="carousel-btn prev" aria-label="Previous">←</button>
+          <button class="carousel-btn next" aria-label="Next">→</button>
+        </div>
+        <div class="carousel-dots"></div>
+        <div class="carousel-counter">
+          <span class="current counter-current">01</span>
+          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
+          <span class="counter-total">04</span>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- ── SLIDESHOW 3 — SUBSTANCE DESIGNER DECALS ── -->
+  <div class="carousel-section">
+    <h2 class="section-title">Substance Designer Decals</h2>
+
+    <div class="carousel-outer">
+      <div class="drag-hint">Drag to explore</div>
+
+      <div class="carousel-track-wrap">
+        <div class="carousel-track">
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="/imgs/ModularCastle/CracksDecal.webp" alt="Cracks decal graph" loading="lazy">
+            <div class="slide-caption">Cracks Decal</div>
+            <span class="slide-index">01</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="/imgs/ModularCastle/GrungeDecal1.webp" alt="Grunge decal graph, variant one" loading="lazy">
+            <div class="slide-caption">Grunge Decal 01</div>
+            <span class="slide-index">02</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="/imgs/ModularCastle/GrungeDecal2.webp" alt="Grunge decal graph, variant two" loading="lazy">
+            <div class="slide-caption">Grunge Decal 02</div>
+            <span class="slide-index">03</span>
+          </div>
+
+          <div class="carousel-slide carousel-slide--contain">
+            <img src="/imgs/ModularCastle/MossDecal.webp" alt="Moss decal graph" loading="lazy">
+            <div class="slide-caption">Moss Decal</div>
+            <span class="slide-index">04</span>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /track-wrap -->
+
+      <div class="carousel-controls">
+        <div class="carousel-arrows">
+          <button class="carousel-btn prev" aria-label="Previous">←</button>
+          <button class="carousel-btn next" aria-label="Next">→</button>
+        </div>
+        <div class="carousel-dots"></div>
+        <div class="carousel-counter">
+          <span class="current counter-current">01</span>
+          <span style="color: var(--border-ornate); margin: 0 6px;">·</span>
+          <span class="counter-total">04</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- ── PREV / NEXT PROJECTS ── -->
   <nav class="project-nav" aria-label="Project navigation">
-    <a href="/starborn/" class="project-nav-item prev">
+    <a href="/bellum/" class="project-nav-item prev">
       <span class="nav-item-arrow">←</span>
       <span class="nav-item-text">
         <span class="nav-item-label">Previous</span>
-        <span class="nav-item-title">Starborn Orion</span>
+        <span class="nav-item-title">Bellum</span>
       </span>
     </a>
-    <a href="/odyssey/" class="project-nav-item next">
+    <a href="/alchemist/" class="project-nav-item next">
       <span class="nav-item-text">
         <span class="nav-item-label">Next</span>
-        <span class="nav-item-title">Odyssey VR</span>
+        <span class="nav-item-title">Alchemist Study</span>
       </span>
       <span class="nav-item-arrow">→</span>
     </a>
@@ -360,7 +340,6 @@
 <script src="/js/lightbox-carousel.js"></script>
 <script src="/js/capsule-touch.js"></script>
 <script src="/js/spec-reveal.js"></script>
-<script src="/js/before-after-slider.js"></script>
 
 </body>
 </html>

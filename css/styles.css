@@ -462,7 +462,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 400px 460px 340px;
+    grid-template-rows: 400px 460px 340px 400px;
     gap: 3px;
   }
 
@@ -481,12 +481,15 @@
   /* Row 3: Card 4 — narrow left (5 cols), Card 5 — wide right (7 cols) */
   .portfolio-item:nth-child(4) { grid-column: 1 / 6;  grid-row: 3; }
   .portfolio-item:nth-child(5) { grid-column: 6 / 13; grid-row: 3; }
+  /* Row 4: Card 6 — full-width bookend (Odyssey) */
+  .portfolio-item:nth-child(6) { grid-column: 1 / 13; grid-row: 4; }
 
   .portfolio-item:nth-child(1) .item-bg { background: linear-gradient(135deg, #141a0d 0%, #1a0d0d 100%); }
   .portfolio-item:nth-child(2) .item-bg { background: linear-gradient(135deg, #1a0d2e 0%, #0d1520 100%); }
   .portfolio-item:nth-child(3) .item-bg { background: linear-gradient(135deg, #1a0a0a 0%, #2a1a0a 100%); }
   .portfolio-item:nth-child(4) .item-bg { background: linear-gradient(135deg, #0a0a1a 0%, #0a1a14 100%); }
   .portfolio-item:nth-child(5) .item-bg { background: linear-gradient(135deg, #1a1204 0%, #0d0820 100%); }
+  .portfolio-item:nth-child(6) .item-bg { background: linear-gradient(135deg, #0a1a1a 0%, #1a0a1a 100%); }
 
   .item-bg {
     position: absolute;
