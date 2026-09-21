@@ -343,6 +343,10 @@ nav:not(.project-nav) {
 .carousel-slide--contain:hover img,
 .carousel-slide--contain:hover video { transform: none; }
 
+/* Contain slide that should still zoom on hover, e.g. a video with room to grow inside its padding */
+.carousel-slide--contain.carousel-slide--zoom-hover:hover img,
+.carousel-slide--contain.carousel-slide--zoom-hover:hover video { transform: scale(1.03); }
+
 /* Slide index label */
 .slide-index {
   position: absolute;
