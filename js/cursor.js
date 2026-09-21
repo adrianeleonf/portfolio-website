@@ -13,7 +13,7 @@
     ring.style.top  = e.clientY + 'px';
   });
 
-  document.querySelectorAll('a, button, .carousel-slide, .portfolio-item').forEach(function(el) {
+  document.querySelectorAll('a, button, .carousel-slide, .portfolio-item, .capsule-peek').forEach(function(el) {
     el.addEventListener('mouseenter', function() {
       ring.style.width   = '50px';
       ring.style.height  = '50px';

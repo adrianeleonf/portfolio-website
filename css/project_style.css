@@ -340,12 +340,6 @@ nav:not(.project-nav) {
   object-fit: contain;
   padding: 24px;
 }
-.carousel-slide--contain:hover img,
-.carousel-slide--contain:hover video { transform: none; }
-
-/* Contain slide that should still zoom on hover, e.g. a video with room to grow inside its padding */
-.carousel-slide--contain.carousel-slide--zoom-hover:hover img,
-.carousel-slide--contain.carousel-slide--zoom-hover:hover video { transform: scale(1.03); }
 
 /* Slide index label */
 .slide-index {
@@ -463,6 +457,7 @@ nav:not(.project-nav) {
   top: 50%;
   transform: translateY(-50%);
   z-index: 450;
+  will-change: transform;
 }
 
 .capsule-shell {
@@ -487,12 +482,40 @@ nav:not(.project-nav) {
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  transform: translateY(var(--capsule-offset, 0px));
-  transition: transform 0.45s cubic-bezier(.22,.9,.3,1);
 }
 
-.project-capsule:hover .capsule-items {
-  transform: translateY(0);
+/* Sits over the list's first slot while collapsed, showing the current
+   page's own thumbnail. The real list below is always at its natural,
+   unshifted position — it never has to slide into place under a
+   stationary cursor, which is what read as a jump: as items moved, the
+   cursor ended up over a different item mid-transition, and each swap
+   fired its own hover fade on top of the resize. This just crossfades
+   away instead. */
+.capsule-peek {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(179,160,143,0.15);
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  cursor: default;
+}
+
+.capsule-peek img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-capsule:hover .capsule-peek {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .capsule-label-list {
@@ -958,8 +981,8 @@ nav:not(.project-nav) {
      .expanded class instead (see js/capsule-touch.js). Once expanded,
      every label is shown at once — there's no reliable per-item hover
      on touch to reveal them individually like on desktop. */
-  .project-capsule.expanded .capsule-shell { max-height: 320px; }
-  .project-capsule.expanded .capsule-items { transform: translateY(0); }
+  .project-capsule.expanded .capsule-shell { max-height: 384px; }
+  .project-capsule.expanded .capsule-peek { opacity: 0; pointer-events: none; }
   .project-capsule.expanded .capsule-label { opacity: 1; }
 
   .lightbox { padding: 24px; }
